@@ -23,17 +23,17 @@ public class Review {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "review_id")
-    private Long reviewId; // 評價編號
+    private Integer reviewId; // 評價編號
 
 	@ManyToOne
-    @JoinColumn(name = "listing_id", nullable = false)
-	@Column(name = "review_listing_id")
-    private Long listingId; // 關聯的房源 ID
+    @JoinColumn(name = "listing_id")
+	@Column(name = "review_listing_id", nullable = false)
+    private Integer reviewListingId; // 關聯的房源 ID
 
 	@ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-	@Column(name = "review_tenant_id")
-    private Long tenantId; // 評價人（租客）ID
+    @JoinColumn(name = "user_id")
+	@Column(name = "tenant_id", nullable = false)
+    private Integer tenantId; // 評價人（租客）ID
 
     @Column(name = "rating", nullable = false)
     private Integer rating; // 評分（1到5分）

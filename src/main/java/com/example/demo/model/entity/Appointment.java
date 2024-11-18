@@ -26,20 +26,22 @@ public class Appointment {
     private Long appointmentId; // 預約編號
 
 	@ManyToOne
-    @JoinColumn(name = "listing_id", nullable = false)
-	@Column(name = "appointment_listing_id")
-    private Long listingId; // 房源ID
+    @JoinColumn(name = "listing_id")
+	@Column(name = "appointment_listing_id", nullable = false)
+    private Long appointmentListingId; // 房源ID
 
 	@ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-	@Column(name = "appointment_tenant_id")
-    private Long tenantId; // 租客ID
+    @JoinColumn(name = "user_id")
+	@Column(name = "appointment_user_id", nullable = false)
+    private Long appointmentUserId; // 租客ID
 
     @Column(name = "appointment_date", nullable = false)
     private LocalDateTime appointmentDate; // 預約日期時間
 
-    @Column(name = "appointment_status", nullable = false, length = 20)
-    private String appointmentStatus; // 預約狀態（待確認、已確認、已完成、已取消）
+    @ManyToOne
+    @JoinColumn(name = "schedule_id")
+    @Column(name = "appointment_status", columnDefinition = "Integer default 1")
+    private Integer appointmentStatus; // 預約狀態（1 待確認、2 已確認、3 已完成、4 已取消）
 
     @Column(name = "appointment_created_at", nullable = false)
     private LocalDateTime appointmentCreatedAt; // 預約請求日期
