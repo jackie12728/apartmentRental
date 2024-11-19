@@ -22,35 +22,33 @@ import lombok.NoArgsConstructor;
 public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "listing_id")
     private Integer listingId; // 房源編號
 
-    @Column(name = "listing_name", nullable = false)
+    @Column(nullable = false)
     private String listingName; // 房源名稱
 
-    @Column(name = "description")
     private String description; // 房源描述
 
-    @Column(name = "address", nullable = false)
-    private String address; // 地址
+    @Column(nullable = false)
+    private String address; // 房源地址
 
     @Column(name = "rent", nullable = false)
-    private String rent; // 租金
+    private Integer rent; // 房源租金
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @Column(name = "landlord_id", nullable = false)
-    private Integer landlordId; // 房東 (使用者 ID)
+    @Column(nullable = false)
+    private Integer landlordId; // 房東編號 (使用者 ID)
 
     @ManyToOne
     @JoinColumn(name = "listing_status")
-    @Column(name = "listing_status", columnDefinition = "Integer default 1")
-    private Integer listingStatus; // 狀態（待出租 1、已出租 2、已下架 3）
+    @Column(columnDefinition = "Integer default 1")
+    private Integer listingStatus; // 狀態編號（待出租 1、已出租 2、已下架 3）
 
-    @Column(name = "listing_created_at", nullable = false)
-    private LocalDateTime listingCreatedAt;
+    @Column(nullable = false)
+    private LocalDateTime listingCreatedAt; // 房源上架日期
 
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
+    @Column(nullable = false)
+    private LocalDateTime updatedAt; // 房源更新日期
     
 }

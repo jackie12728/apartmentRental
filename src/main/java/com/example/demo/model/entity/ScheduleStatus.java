@@ -19,10 +19,9 @@ public class ScheduleStatus {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "schedule_id")
     private Integer scheduleId; // 預約狀態 ID
 
-    @Column(name = "schedule_name", nullable = false)
+    @Column(nullable = false)
     private String scheduleName; // 預約狀態名稱
     
 }

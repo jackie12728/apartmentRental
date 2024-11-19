@@ -19,10 +19,9 @@ public class PaymentStatus {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "payment_id")
     private Integer paymentId; // 訂單狀態 ID
 
-    @Column(name = "payment_name", nullable = false)
+    @Column(nullable = false)
     private String paymentName; // 訂單狀態名稱
     
 }

@@ -19,10 +19,9 @@ public class UserStatus {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "status_id")
     private Integer statusId; // 使用者狀態 ID
 
-    @Column(name = "status_name", nullable = false)
+    @Column(nullable = false)
     private String statusName; // 使用者狀態名稱
     
 }

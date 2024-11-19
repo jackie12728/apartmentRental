@@ -19,10 +19,9 @@ public class RentalStatus {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "rental_id")
     private Integer rentalId; // 房源狀態 ID
 
-    @Column(name = "rental_name", nullable = false)
+    @Column(nullable = false)
     private String rentalName; // 房源狀態名稱
     
 }

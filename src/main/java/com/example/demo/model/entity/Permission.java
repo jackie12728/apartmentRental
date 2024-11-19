@@ -19,10 +19,9 @@ public class Permission {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
     private Integer roleId; // 權限 ID
 
-    @Column(name = "username", nullable = false)
+    @Column(nullable = false)
     private String username; // 權限名稱
     
 }

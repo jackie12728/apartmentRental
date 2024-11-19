@@ -22,25 +22,24 @@ import lombok.NoArgsConstructor;
 public class Review {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "review_id")
     private Integer reviewId; // 評價編號
 
 	@ManyToOne
     @JoinColumn(name = "listing_id")
-	@Column(name = "review_listing_id", nullable = false)
+	@Column(nullable = false)
     private Integer reviewListingId; // 關聯的房源 ID
 
 	@ManyToOne
     @JoinColumn(name = "user_id")
-	@Column(name = "tenant_id", nullable = false)
-    private Integer tenantId; // 評價人（租客）ID
+	@Column(nullable = false)
+    private Integer reviewUserId; // 評價人（租客）ID
 
-    @Column(name = "rating", nullable = false)
+    @Column(nullable = false)
     private Integer rating; // 評分（1到5分）
 
-    @Column(name = "comment", length = 500)
+    @Column(length = 500)
     private String comment; // 評價內容
 
-    @Column(name = "review_created_at", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime reviewCreatedAt; // 評價日期
 }

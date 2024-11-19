@@ -22,17 +22,16 @@ import lombok.NoArgsConstructor;
 public class ListingImage {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "image_id")
     private Integer imageId; // 圖片編號
 
 	@ManyToOne
     @JoinColumn(name = "listing_id")
-	@Column(name = "image_listing_id", nullable = false)
+	@Column(nullable = false)
     private Integer imageListingId; // 關聯的房源ID
 
-    @Column(name = "image_url", nullable = false)
-    private String imageUrl; // 圖片 URL
+    @Column(nullable = false)
+    private String imagePath; // 圖片路徑
 
-    @Column(name = "uploaded_at", nullable = false)
+    @Column(nullable = false)
     private LocalDateTime uploadedAt; // 上傳日期
 }
