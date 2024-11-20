@@ -1,6 +1,7 @@
 package com.example.demo.model.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,16 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity // 實體類與資料表對應(會自動建立資料表)
-@Table(name = "users")
+@Table(name = "`user`")
 public class User {
 	
     @Id
@@ -51,5 +51,8 @@ public class User {
     @JoinColumn(name = "status_id")
     @Column(columnDefinition = "Integer default 1")
 	private Integer status; // 使用者狀態 (1 啟用、0 停用)
+    
+    @OneToMany(mappedBy = "user")
+    private List<Appointment> appointments;
     
 }

@@ -15,24 +15,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity // 實體類與資料表對應(會自動建立資料表)
-@Table(name = "appointments")
+@Table(name = "appointment")
 public class Appointment {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long appointmentId; // 預約編號
+    private Long id; // 預約編號
 
 	@ManyToOne
     @JoinColumn(name = "listing_id")
-	@Column(nullable = false)
-    private Long appointmentListingId; // 房源ID
+    private Listing listing; // 房源
 
 	@ManyToOne
     @JoinColumn(name = "user_id")
-	@Column(nullable = false)
-    private Long appointmentUserId; // 租客ID
+    private User user; // 租客ID
 
     @Column(nullable = false)
     private LocalDateTime appointmentDate; // 預約日期時間
