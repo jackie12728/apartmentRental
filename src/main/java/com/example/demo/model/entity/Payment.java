@@ -1,27 +1,29 @@
 package com.example.demo.model.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity // 實體類與資料表對應(會自動建立資料表)
-@Table(name = "schedule_status")
-public class ScheduleStatus {
+@Table(name = "payment")
+public class Payment {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer scheduleId; // 預約狀態 ID
+    private Long id; // 訂單狀態 ID
 
     @Column(nullable = false)
-    private String scheduleName; // 預約狀態名稱
+    private String paymentName; // 訂單狀態名稱
+    
+    @OneToMany(mappedBy = "payment")
+    private List<Order> orders;
     
 }

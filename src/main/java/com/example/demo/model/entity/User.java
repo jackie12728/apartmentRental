@@ -12,9 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Entity // 實體類與資料表對應(會自動建立資料表)
@@ -23,7 +21,7 @@ public class User {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId; // 使用者 ID
+    private Long id; // 使用者 ID
 
     @Column(nullable = false)
     private String userName; // 使用者名稱
@@ -37,22 +35,30 @@ public class User {
     @Column(nullable = false)
 	private String salt; // 隨機鹽
 
+    @Column(nullable = false)
     private String phoneNumber; // 使用者電話號碼
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
-    @Column(columnDefinition = "Integer default 1")
-    private Integer role; // 角色權限，租客 1、房東 2、系統管理員 3
+    @JoinColumn(name = "permission_id")
+    private Permission permission; // 角色權限，租客 1、房東 2、系統管理員 3
 
     @Column(nullable = false)
     private LocalDateTime createdAt; // 註冊日期
 
     @ManyToOne
     @JoinColumn(name = "status_id")
-    @Column(columnDefinition = "Integer default 1")
-	private Integer status; // 使用者狀態 (1 啟用、0 停用)
+	private UserStatus userStatus; // 使用者狀態 (1 啟用、0 停用)
     
     @OneToMany(mappedBy = "user")
     private List<Appointment> appointments;
+    
+    @OneToMany(mappedBy = "user")
+    private List<Listing> listings;
+    
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+    
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
     
 }

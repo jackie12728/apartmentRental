@@ -15,14 +15,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReviewDto {
 
-	@NotNull(message = "{reviewDto.reviewId.notNull}")
-	private Integer reviewId; // 評價編號
+	@NotNull(message = "{reviewDto.id.notNull}")
+	private Long id; // 評價編號
 
-	@NotNull(message = "{reviewDto.reviewListingId.notNull}")
-    private Integer reviewListingId; // 關聯的房源 ID
+	@NotNull(message = "{reviewDto.listingId.notNull}")
+    private Long listingId; // 關聯的房源 ID
 
-	@NotNull(message = "{reviewDto.reviewUserId.notNull}")
-    private Integer reviewUserId; // 評價人（租客）ID
+	@NotNull(message = "{reviewDto.userId.notNull}")
+    private Long userId; // 評價人（租客）ID
 
 	@NotNull(message = "{reviewDto.rating.notNull}")
 	@Range(min = 1, max = 5, message = "{reviewDto.rating.range}")

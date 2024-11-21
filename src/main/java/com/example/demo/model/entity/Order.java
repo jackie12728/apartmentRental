@@ -10,37 +10,30 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity // 實體類與資料表對應(會自動建立資料表)
-@Table(name = "orders")
+@Table(name = "`order`")
 public class Order {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId; // 訂單編號
+    private Long id; // 訂單編號
 
 	@ManyToOne
     @JoinColumn(name = "listing_id")
-	@Column(nullable = false)
-    private Long orderListingId; // 房源ID
+    private Listing listing; // 房源ID
 
 	@ManyToOne
     @JoinColumn(name = "user_id")
-	@Column(nullable = false)
-    private Long orderUserId; // 租客ID
+    private User user; // 租客ID
 
     @Column(nullable = false)
     private LocalDateTime orderDate; // 訂單日期時間
 
     @ManyToOne
     @JoinColumn(name = "payment_id")
-    @Column(columnDefinition = "Integer default 1")
-    private Integer orderStatus; // 訂單狀態 (1 未付款、2 已付款、0 已取消)
+    private Payment payment; // 訂單狀態 (1 未付款、2 已付款、0 已取消)
 
     @Column(nullable = false)
     private String amount; // 訂單金額

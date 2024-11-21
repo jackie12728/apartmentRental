@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ListingImageDto {
 
-	@NotNull(message = "{listingImageDto.imageId.notNull}")
-    private Integer imageId; // 圖片編號
+	@NotNull(message = "{listingImageDto.id.notNull}")
+    private Long id; // 圖片編號
 
-	@NotNull(message = "{listingImageDto.imageListingId.notNull}")
-    private Integer imageListingId; // 關聯的房源ID
+	@NotNull(message = "{listingImageDto.listingId.notNull}")
+    private Long listingId; // 關聯的房源ID
 
 	@NotNull(message = "{listingImageDto.imagePath.notNull}")
     private String imagePath; // 圖片路徑
