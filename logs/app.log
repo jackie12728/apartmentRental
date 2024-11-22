@@ -72,3 +72,7 @@
 2024-11-21T12:23:20.820+08:00  WARN 2896 --- [springboot-mvc-apartment-rental] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2024-11-21T12:23:21.016+08:00  INFO 2896 --- [springboot-mvc-apartment-rental] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8084 (http) with context path '/'
 2024-11-21T12:23:21.020+08:00  INFO 2896 --- [springboot-mvc-apartment-rental] [main] .SpringbootMvcApartmentRentalApplication : Started SpringbootMvcApartmentRentalApplication in 2.098 seconds (process running for 2.395)
+2024-11-21T17:41:02.094+08:00  INFO 2896 --- [springboot-mvc-apartment-rental] [RMI TCP Connection(328)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-11-21T17:41:02.099+08:00  INFO 2896 --- [springboot-mvc-apartment-rental] [RMI TCP Connection(328)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-21T17:41:02.100+08:00  INFO 2896 --- [springboot-mvc-apartment-rental] [RMI TCP Connection(328)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-21T17:41:02.101+08:00  INFO 2896 --- [springboot-mvc-apartment-rental] [RMI TCP Connection(328)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
