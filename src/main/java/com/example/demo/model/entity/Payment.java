@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity // 實體類與資料表對應(會自動建立資料表)
@@ -24,6 +25,7 @@ public class Payment {
     private String paymentName; // 訂單狀態名稱
     
     @OneToMany(mappedBy = "payment")
+    @ToString.Exclude
     private List<Order> orders;
     
 }

@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity // 實體類與資料表對應(會自動建立資料表)
@@ -21,10 +22,12 @@ public class Appointment {
     private Long id; // 預約編號
 
 	@ManyToOne
+	@ToString.Exclude
     @JoinColumn(name = "listing_id")
     private Listing listing; // 房源
 
 	@ManyToOne
+	@ToString.Exclude
     @JoinColumn(name = "user_id")
     private User user; // 租客ID
 
@@ -32,6 +35,7 @@ public class Appointment {
     private LocalDateTime appointmentDate; // 預約日期時間
 
     @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name = "schedule_id")
     private Schedule schedule; // 預約狀態（1 待確認、2 已確認、3 已完成、4 已取消）
 

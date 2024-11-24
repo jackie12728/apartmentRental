@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity // 實體類與資料表對應(會自動建立資料表)
@@ -24,6 +25,7 @@ public class Rental {
     private String rentalName; // 房源狀態名稱
     
     @OneToMany(mappedBy = "rental")
+    @ToString.Exclude
     List<Listing> listings;
     
 }

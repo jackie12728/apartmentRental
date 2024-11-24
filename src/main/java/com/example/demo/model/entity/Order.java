@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity // 實體類與資料表對應(會自動建立資料表)
@@ -21,10 +22,12 @@ public class Order {
     private Long id; // 訂單編號
 
 	@ManyToOne
+	@ToString.Exclude
     @JoinColumn(name = "listing_id")
     private Listing listing; // 房源ID
 
 	@ManyToOne
+	@ToString.Exclude
     @JoinColumn(name = "user_id")
     private User user; // 租客ID
 
@@ -32,6 +35,7 @@ public class Order {
     private LocalDateTime orderDate; // 訂單日期時間
 
     @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name = "payment_id")
     private Payment payment; // 訂單狀態 (1 未付款、2 已付款、0 已取消)
 
