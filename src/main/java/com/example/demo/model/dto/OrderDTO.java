@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDto {
+public class OrderDTO {
 
 	@NotNull(message = "{orderDto.id.notNull}")
 	private Long id; // 訂單編號

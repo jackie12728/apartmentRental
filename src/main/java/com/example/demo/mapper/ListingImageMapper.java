@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.model.dto.ListingImageDto;
+import com.example.demo.model.dto.ListingImageDTO;
 import com.example.demo.model.entity.Listing;
 import com.example.demo.model.entity.ListingImage;
 
@@ -14,12 +14,12 @@ public class ListingImageMapper {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	public ListingImageDto toDto(ListingImage listingImage) {
+	public ListingImageDTO toDto(ListingImage listingImage) {
 		// Entity 轉 DTO
-		return modelMapper.map(listingImage, ListingImageDto.class);
+		return modelMapper.map(listingImage, ListingImageDTO.class);
 	}
 	
-	public Listing toEntity(ListingImageDto listingImageDto) {
+	public Listing toEntity(ListingImageDTO listingImageDto) {
 		// DTO 轉 Entity
 		return modelMapper.map(listingImageDto, Listing.class);
 	}

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReviewDto {
+public class ReviewDTO {
 
 	@NotNull(message = "{reviewDto.id.notNull}")
 	private Long id; // 評價編號

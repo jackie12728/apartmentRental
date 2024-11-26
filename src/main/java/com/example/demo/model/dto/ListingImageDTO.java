@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListingImageDto {
+public class ListingImageDTO {
 
 	@NotNull(message = "{listingImageDto.id.notNull}")
     private Long id; // 圖片編號

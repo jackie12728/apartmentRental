@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListingDto {
+public class ListingDTO {
 
 	@NotNull(message = "{listingDto.id.notNull}")
     private Long id; // 房源編號

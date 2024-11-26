@@ -11,7 +11,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.ToString;
 
 @Data
 @Entity // 實體類與資料表對應(會自動建立資料表)
@@ -22,12 +21,10 @@ public class Review {
     private Long id; // 評價編號
 
 	@ManyToOne
-	@ToString.Exclude
     @JoinColumn(name = "listing_id")
     private Listing listing; // 關聯的房源 ID
 
 	@ManyToOne
-	@ToString.Exclude
     @JoinColumn(name = "user_id")
     private User user; // 評價人（租客）ID
 

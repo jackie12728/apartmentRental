@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserDTO {
 
 	@NotNull(message = "{userDto.id.notNull}")
 	private Long id; // 使用者 ID
@@ -21,6 +21,7 @@ public class UserDto {
 	@NotNull(message = "{userDto.email.notNull}")
     private String email; // 使用者 email 帳號
 
+	@NotNull(message = "{userDto.phoneNumber.notNull}")
     private String phoneNumber; // 使用者電話號碼
 
     @NotNull(message = "{userDto.permissionId.notNull}")

@@ -1,5 +1,8 @@
 package com.example.demo.service.impl;
 
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +20,24 @@ public class CertServiceImpl implements CertService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Override
 	public UserCert getCert(String email, String password) throws CertException {
 		// 1.是否有此人
-		User user = userRepository.findByEmail(email);
-		if (user == null) {
+//		User user = userRepository.findByEmail(email);
+//		if (user == null) {
+//			throw new UserNotFoundException();
+//		}
+
+		Optional<User> optUser = userRepository.findByEmail(email);
+		if (optUser.isEmpty()) {
 			throw new UserNotFoundException();
 		}
+		// 利用 modelMapper 將 optUser 轉 User
+		User user = modelMapper.map(optUser.get(), User.class);
 
 		// 2.比對密碼
 		String passwordHash = Hash.getHash(password, user.getSalt());
@@ -33,8 +46,9 @@ public class CertServiceImpl implements CertService {
 		}
 
 		// 3. 簽發憑證
-		UserCert userCert = new UserCert(user.getId(), user.getUserName(), user.getPermission());
-		return userCert;
+//		UserCert userCert = new UserCert(user.getId(), user.getUsername(), user.getPermission());
+//		return userCert;
+		return null;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +12,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	// 預設對自動實現 CRUD
 	// 用 email 查詢 user (自動產生 SQL)
-	User findByEmail(String email);
+	Optional<User> findByEmail(String email);
+	
+	Optional<User> findByUsername(String username);
 }

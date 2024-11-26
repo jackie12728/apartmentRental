@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AppointmentDto {
+public class AppointmentDTO {
 	
 	@NotNull(message = "{appointmentDto.id.notNull}")
 	private Long id; // 預約編號
