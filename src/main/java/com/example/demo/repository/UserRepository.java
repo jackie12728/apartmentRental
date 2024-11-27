@@ -14,5 +14,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	// 用 email 查詢 user (自動產生 SQL)
 	Optional<User> findByEmail(String email);
 	
-	Optional<User> findByUsername(String username);
 }

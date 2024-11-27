@@ -11,6 +11,7 @@ import com.example.demo.model.dto.UserDTO;
 import com.example.demo.model.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
+import com.example.demo.util.Hash;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,25 +21,20 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private ModelMapper modelMapper;
-	
-	@Override
-	public Optional<UserDTO> findByUsername(String username) {
-		Optional<User> optUser = userRepository.findByUsername(username);
-		if(optUser.isEmpty()) return Optional.empty();
-		// 利用 modelMapper 將 User 轉 UserDTO
-		UserDTO userDTO = modelMapper.map(optUser.get(), UserDTO.class);
-		return Optional.of(userDTO);
-	}
 
 	@Override
 	public Optional<UserDTO> login(LoginDTO loginDTO) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
-	}
-
-	@Override
-	public Optional<UserDTO> saveUser(UserDTO userDTO) {
-		// TODO Auto-generated method stub
+		
+		Optional<User> optUser = userRepository.findByEmail(loginDTO.getEmail());
+		if (optUser.isPresent()) {
+			User user = optUser.get();
+			
+			// 比對密碼
+			String passwordHash = Hash.getHash(loginDTO.getPassword(), user.getSalt());
+			if(passwordHash.equals(user.getPasswordHash())) {
+				return Optional.of(modelMapper.map(user, UserDTO.class));
+			}
+		}
 		return Optional.empty();
 	}
 
