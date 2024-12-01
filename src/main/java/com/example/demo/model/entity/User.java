@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -20,47 +21,55 @@ import lombok.Data;
 @Entity // 實體類與資料表對應(會自動建立資料表)
 @Table(name = "`user`")
 public class User {
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // 使用者 ID
 
-    @Column(nullable = false)
-    private String username; // 使用者名稱
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id; // 使用者 ID
 
-    @Column(nullable = false, unique = true)
-    private String email; // 使用者 email 帳號
+	@Column(nullable = false)
+	private String username; // 使用者名稱
 
-    @Column(nullable = false)
-    private String passwordHash; // 使用者 Hash 密碼
-    
-    @Column(nullable = false)
+	@Column(nullable = false, unique = true)
+	private String email; // 使用者 email 帳號
+
+	@Column(nullable = false)
+	private String passwordHash; // 使用者 Hash 密碼
+
+	@Column(nullable = false)
 	private String salt; // 隨機鹽
 
-    @Column(nullable = false)
-    private String phoneNumber; // 使用者電話號碼
+	@Column(nullable = false)
+	private String phoneNumber; // 使用者電話號碼
 
-    @ManyToOne
-    @JoinColumn(name = "permission_id")
-    private Permission permission; // 角色權限，租客 1、房東 2、系統管理員 3
+	@ManyToOne
+	@JoinColumn(name = "permission_id")
+	private Permission permission; // 角色權限，租客 1、房東 2、系統管理員 3
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt; // 註冊日期
+	@Column(nullable = false)
+	private LocalDateTime createdAt; // 註冊日期
 
-    @ManyToOne
-    @JoinColumn(name = "status_id")
+	@ManyToOne
+	@JoinColumn(name = "status_id")
 	private UserStatus userStatus; // 使用者狀態 (1 啟用、0 停用)
-    
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Appointment> appointments;
-    
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Listing> listings;
-    
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Order> orders;
-    
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Review> reviews;
-    
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Appointment> appointments;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Listing> listings;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Order> orders;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Review> reviews;
+
+	// 註冊時，在保存之前自動設置 createdAt
+	@PrePersist
+	public void prePersist() {
+		if (createdAt == null) {
+			createdAt = LocalDateTime.now(); // 設置為當前時間
+		}
+	}
+
 }

@@ -11,6 +11,8 @@ public class ModelMapperConfig {
 	// 若有必要其他程式可以透過 @Autowired 取得該實體
 	@Bean
 	ModelMapper modelMapper() {
+		
+		ModelMapper modelMapper = new ModelMapper();
 		return new ModelMapper();
 	}
 }
