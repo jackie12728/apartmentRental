@@ -30,6 +30,14 @@ public class Listing {
     @Column(nullable = false)
     private String description; // 房源描述
 
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+    
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
+    
     @Column(nullable = false)
     private String address; // 房源地址
 
