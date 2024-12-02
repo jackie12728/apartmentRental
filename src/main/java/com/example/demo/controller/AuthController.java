@@ -53,7 +53,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<ApiResponse<String>> register(@RequestBody RegisterDTO registerDTO, HttpSession session) {
+	public ResponseEntity<ApiResponse<String>> register(@RequestBody RegisterDTO registerDTO) {
 		
 		Optional<UserDTO> optUserDTO = userService.saveUser(registerDTO);
 		if(optUserDTO.isEmpty()) {
