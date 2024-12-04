@@ -122,3 +122,7 @@ Consider defining a bean of type 'com.example.demo.service.SearchService' in you
 2024-12-03T15:27:51.418+08:00  INFO 7048 --- [springboot-mvc-apartment-rental] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-12-03T15:27:51.418+08:00  INFO 7048 --- [springboot-mvc-apartment-rental] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2024-12-03T15:27:51.419+08:00  INFO 7048 --- [springboot-mvc-apartment-rental] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-03T17:05:40.503+08:00  INFO 7048 --- [springboot-mvc-apartment-rental] [RMI TCP Connection(107)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-03T17:05:40.508+08:00  INFO 7048 --- [springboot-mvc-apartment-rental] [RMI TCP Connection(107)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-03T17:05:40.509+08:00  INFO 7048 --- [springboot-mvc-apartment-rental] [RMI TCP Connection(107)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-03T17:05:40.510+08:00  INFO 7048 --- [springboot-mvc-apartment-rental] [RMI TCP Connection(107)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -17,17 +17,23 @@ public class ListingDTO {
 	@NotNull(message = "{listingDto.id.notNull}")
     private Long id; // 房源編號
 
-	@NotNull(message = "{listingDto.listingName.notNull}")
-    private String listingName; // 房源名稱
+	@NotNull(message = "{listingDto.listingname.notNull}")
+    private String listingname; // 房源名稱
 
 	@NotNull(message = "{listingDto.description.notNull}")
     private String description; // 房源描述
+	
+	@NotNull(message = "{listingDto.cityId.notNull}")
+	private Long cityId; // 縣市 ID
+	
+	@NotNull(message = "{listingDto.regionId.notNull}")
+	private Long regionId; // 區域 ID
 
 	@NotNull(message = "{listingDto.address.notNull}")
     private String address; // 房源地址
 
 	@NotNull(message = "{listingDto.rent.notNull}")
-	@Range(min = 1, message = "{listingDto.rent.range}")
+	@Range(min = 0, message = "{listingDto.rent.range}")
     private Integer rent; // 房源租金
 
 	@NotNull(message = "{listingDto.userId.notNull}")

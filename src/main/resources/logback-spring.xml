@@ -1,0 +1,24 @@
+<configuration>
+
+    <!-- 定義日誌模式 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/order.log</file> <!-- 設定基本的檔案名稱 -->
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 基於日期的滾動策略 -->
+            <fileNamePattern>logs/%d{yyyy-MM-dd}-order.log</fileNamePattern> <!-- 文件命名模式：年月日-檔案名 -->
+            <maxHistory>365</maxHistory> <!-- 保留最近 365 天的日誌 -->
+            <totalSizeCap>10MB</totalSizeCap> <!-- 限制最大儲存日誌的大小 -->
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern> <!-- 日誌輸出格式 -->
+        </encoder>
+    </appender>
+
+    <!-- 設定根日誌輸出級別為 INFO，並且輸出到 FILE -->
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

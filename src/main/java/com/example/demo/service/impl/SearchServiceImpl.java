@@ -5,11 +5,15 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.dto.CityDTO;
+import com.example.demo.model.dto.ListingDTO;
 import com.example.demo.model.dto.RegionDTO;
+import com.example.demo.model.entity.Listing;
 import com.example.demo.repository.CityRepository;
+import com.example.demo.repository.ListingRepository;
 import com.example.demo.repository.RegionRepository;
 import com.example.demo.service.SearchService;
 
@@ -21,6 +25,9 @@ public class SearchServiceImpl implements SearchService {
 	
 	@Autowired
 	private RegionRepository regionRepository;
+	
+	@Autowired
+	private ListingRepository listingRepository;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -36,6 +43,18 @@ public class SearchServiceImpl implements SearchService {
 	public List<RegionDTO> getRegions(Long cityId) {
 		return regionRepository.findByCityId(cityId).stream()
 				.map(region -> modelMapper.map(region, RegionDTO.class))
+				.collect(Collectors.toList());
+	}
+	
+	@Override
+	public List<ListingDTO> searchListings(Long cityId, Long regionId, Integer minRent, Integer maxRent, String listingname) {
+		Specification<Listing> spec = Specification.where(SearchBarSpecifications.byCityId(cityId))
+	            .and(SearchBarSpecifications.byRegionId(regionId))
+	            .and(SearchBarSpecifications.byRentRange(minRent, maxRent))
+	            .and(SearchBarSpecifications.byListingname(listingname));
+	        
+		return listingRepository.findAll(spec).stream()
+				.map(search -> modelMapper.map(search, ListingDTO.class))
 				.collect(Collectors.toList());
 	}
 

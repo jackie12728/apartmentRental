@@ -32,11 +32,11 @@ public class Listing {
 
     @ManyToOne
     @JoinColumn(name = "city_id")
-    private City city;
+    private City city; // 縣市 ID
     
     @ManyToOne
     @JoinColumn(name = "region_id")
-    private Region region;
+    private Region region; // 區域 ID
     
     @Column(nullable = false)
     private String address; // 房源地址
