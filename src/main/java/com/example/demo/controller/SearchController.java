@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.dto.CityDTO;
+import com.example.demo.model.dto.ListingDTO;
 import com.example.demo.model.dto.RegionDTO;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.SearchService;
@@ -47,4 +49,19 @@ public class SearchController {
 		
 		return ResponseEntity.ok(ApiResponse.success("查詢成功", regions));
 	}
+	
+    @GetMapping("/searchBar")
+    public ResponseEntity<ApiResponse<List<ListingDTO>>> searchListings(
+        @RequestParam(required = false) Long cityId,
+        @RequestParam(required = false) List<Long> regionIds, // 接收多個 regionId
+        @RequestParam(required = false) Integer minRent,
+        @RequestParam(required = false) Integer maxRent,
+        @RequestParam(required = false) String listingName
+    ) {
+        List<ListingDTO> listings = searchService.searchListings(cityId, regionIds, minRent, maxRent, listingName);
+        if(listings.isEmpty()) {
+			return ResponseEntity.status(404).body(ApiResponse.error(404, "查詢不到符合條件的房屋"));
+		}
+        return ResponseEntity.ok(ApiResponse.success("查詢成功",listings));
+    }
 }

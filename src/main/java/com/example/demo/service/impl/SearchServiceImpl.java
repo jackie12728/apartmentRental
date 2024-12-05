@@ -47,9 +47,9 @@ public class SearchServiceImpl implements SearchService {
 	}
 	
 	@Override
-	public List<ListingDTO> searchListings(Long cityId, Long regionId, Integer minRent, Integer maxRent, String listingname) {
+	public List<ListingDTO> searchListings(Long cityId, List<Long> regionIds, Integer minRent, Integer maxRent, String listingname) {
 		Specification<Listing> spec = Specification.where(SearchBarSpecifications.byCityId(cityId))
-	            .and(SearchBarSpecifications.byRegionId(regionId))
+	            .and(SearchBarSpecifications.byRegionIds(regionIds))
 	            .and(SearchBarSpecifications.byRentRange(minRent, maxRent))
 	            .and(SearchBarSpecifications.byListingname(listingname));
 	        

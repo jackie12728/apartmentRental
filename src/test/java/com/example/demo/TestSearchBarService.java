@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -18,11 +19,11 @@ public class TestSearchBarService {
 	@Test
 	public void test() {
 		Long cityId = 1L;
-		Long regionId = 1L;
+		List<Long> regionIds = Arrays.asList(1L, 2L, 3L, 4L);
 		Integer minRent = 100;
 		Integer maxRent = 30000;
 		String listingname = "台北";
-		List<ListingDTO> listingDTOs = searchService.searchListings(cityId, regionId, minRent, maxRent, listingname);
+		List<ListingDTO> listingDTOs = searchService.searchListings(cityId, regionIds, minRent, maxRent, listingname);
 		
 		System.out.print(listingDTOs);
 	}

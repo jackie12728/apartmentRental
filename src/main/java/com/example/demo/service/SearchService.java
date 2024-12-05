@@ -12,6 +12,6 @@ public interface SearchService {
 	
 	public List<RegionDTO> getRegions(Long cityId);
 	
-	public List<ListingDTO> searchListings(Long cityId, Long regionId, Integer minRent, Integer maxRent, String listingName);
+	public List<ListingDTO> searchListings(Long cityId, List<Long> regionIds, Integer minRent, Integer maxRent, String listingname);
 	
 }

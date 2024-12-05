@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.data.jpa.domain.Specification;
 
 import com.example.demo.model.entity.Listing;
@@ -11,10 +13,19 @@ public class SearchBarSpecifications {
             cityId == null ? null : criteriaBuilder.equal(root.get("city").get("id"), cityId);
     }
 
-    public static Specification<Listing> byRegionId(Long regionId) {
-        return (root, query, criteriaBuilder) -> 
-            regionId == null ? null : criteriaBuilder.equal(root.get("region").get("id"), regionId);
-    }
+	public static Specification<Listing> byRegionIds(List<Long> regionIds) {
+	    return (root, query, criteriaBuilder) -> {
+	        if (regionIds == null || regionIds.isEmpty()) {
+	            return null; // regionId 不設限
+	        } else if (regionIds.size() == 1) {
+	            // 只有一個 regionId
+	            return criteriaBuilder.equal(root.get("region").get("id"), regionIds.get(0));
+	        } else {
+	            // 多個 regionId
+	            return root.get("region").get("id").in(regionIds);
+	        }
+	    };
+	}
 
     public static Specification<Listing> byRentRange(Integer minRent, Integer maxRent) {
         return (root, query, criteriaBuilder) -> {
