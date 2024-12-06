@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.dto.CityDTO;
 import com.example.demo.model.dto.ListingDTO;
+import com.example.demo.model.dto.ListingImageDTO;
 import com.example.demo.model.dto.RegionDTO;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.SearchService;
@@ -22,8 +23,10 @@ import com.example.demo.service.SearchService;
  * ----------------------------------
  * Servlet-Path: /search
  * ----------------------------------
- * GET /city            查詢所有城市
- * GET /region/{cityId} 查詢城市的所有區域
+ * GET /city                     查詢所有城市
+ * GET /region/{cityId}          查詢城市的所有區域
+ * GET /searchBar                依據搜尋列條件查詢房屋
+ * GET /listingImage/{listingId} 依據房屋ID查詢房屋圖片
  */
 
 @RestController
@@ -37,7 +40,11 @@ public class SearchController {
 	@GetMapping("/city")
 	public ResponseEntity<ApiResponse<List<CityDTO>>> getCities() {
 		List<CityDTO> cities = searchService.getAllCities();
-		return ResponseEntity.ok(ApiResponse.success("獲取城市清單", cities));
+		if(cities.isEmpty()) {
+			return ResponseEntity.status(404).body(ApiResponse.error(404, "查詢不到城市"));
+		}
+		
+		return ResponseEntity.ok(ApiResponse.success("查詢城市清單成功", cities));
 	}
 	
 	@GetMapping("/region/{cityId}")
@@ -47,21 +54,32 @@ public class SearchController {
 			return ResponseEntity.status(404).body(ApiResponse.error(404, "查詢不到城市的所屬區域"));
 		}
 		
-		return ResponseEntity.ok(ApiResponse.success("查詢成功", regions));
+		return ResponseEntity.ok(ApiResponse.success("查詢城市所屬區域成功", regions));
 	}
 	
     @GetMapping("/searchBar")
-    public ResponseEntity<ApiResponse<List<ListingDTO>>> searchListings(
+    public ResponseEntity<ApiResponse<List<ListingDTO>>> getListings(
         @RequestParam(required = false) Long cityId,
         @RequestParam(required = false) List<Long> regionIds, // 接收多個 regionId
         @RequestParam(required = false) Integer minRent,
         @RequestParam(required = false) Integer maxRent,
         @RequestParam(required = false) String listingName
     ) {
-        List<ListingDTO> listings = searchService.searchListings(cityId, regionIds, minRent, maxRent, listingName);
+        List<ListingDTO> listings = searchService.getListings(cityId, regionIds, minRent, maxRent, listingName);
         if(listings.isEmpty()) {
 			return ResponseEntity.status(404).body(ApiResponse.error(404, "查詢不到符合條件的房屋"));
 		}
         return ResponseEntity.ok(ApiResponse.success("查詢成功",listings));
     }
+    
+    @GetMapping("/listingImage/{listingId}")
+    public ResponseEntity<ApiResponse<List<ListingImageDTO>>> getListingImages(@PathVariable Long listingId) {
+    	List<ListingImageDTO> listingImages = searchService.getListingImages(listingId);
+    	if(listingImages.isEmpty()) {
+    		return ResponseEntity.status(404).body(ApiResponse.error(404, "查詢不到房屋的圖片"));
+    	}
+    	
+    	return ResponseEntity.ok(ApiResponse.success("查詢房屋圖片成功", listingImages));
+    }
+    
 }

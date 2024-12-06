@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.dto.CityDTO;
 import com.example.demo.model.dto.ListingDTO;
+import com.example.demo.model.dto.ListingImageDTO;
 import com.example.demo.model.dto.RegionDTO;
 import com.example.demo.model.entity.Listing;
 import com.example.demo.repository.CityRepository;
+import com.example.demo.repository.ListingImageRepository;
 import com.example.demo.repository.ListingRepository;
 import com.example.demo.repository.RegionRepository;
 import com.example.demo.service.SearchService;
@@ -28,6 +30,9 @@ public class SearchServiceImpl implements SearchService {
 	
 	@Autowired
 	private ListingRepository listingRepository;
+	
+	@Autowired
+	private ListingImageRepository listingImageRepository;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -47,7 +52,7 @@ public class SearchServiceImpl implements SearchService {
 	}
 	
 	@Override
-	public List<ListingDTO> searchListings(Long cityId, List<Long> regionIds, Integer minRent, Integer maxRent, String listingname) {
+	public List<ListingDTO> getListings(Long cityId, List<Long> regionIds, Integer minRent, Integer maxRent, String listingname) {
 		Specification<Listing> spec = Specification.where(SearchBarSpecifications.byCityId(cityId))
 	            .and(SearchBarSpecifications.byRegionIds(regionIds))
 	            .and(SearchBarSpecifications.byRentRange(minRent, maxRent))
@@ -55,6 +60,13 @@ public class SearchServiceImpl implements SearchService {
 	        
 		return listingRepository.findAll(spec).stream()
 				.map(search -> modelMapper.map(search, ListingDTO.class))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<ListingImageDTO> getListingImages(Long listingId) {
+		return listingImageRepository.findByListingIdOrderByIdAsc(listingId).stream()
+				.map(listingImage -> modelMapper.map(listingImage, ListingImageDTO.class))
 				.collect(Collectors.toList());
 	}
 
