@@ -53,15 +53,34 @@ public class SearchServiceImpl implements SearchService {
 	
 	@Override
 	public List<ListingDTO> getListings(Long cityId, List<Long> regionIds, Integer minRent, Integer maxRent, String listingname) {
-		Specification<Listing> spec = Specification.where(SearchBarSpecifications.byCityId(cityId))
-	            .and(SearchBarSpecifications.byRegionIds(regionIds))
-	            .and(SearchBarSpecifications.byRentRange(minRent, maxRent))
-	            .and(SearchBarSpecifications.byListingname(listingname));
-	        
-		return listingRepository.findAll(spec).stream()
-				.map(search -> modelMapper.map(search, ListingDTO.class))
-				.collect(Collectors.toList());
-	}
+        // 構建查詢條件
+        Specification<Listing> spec = Specification.where(SearchBarSpecifications.byCityId(cityId))
+                .and(SearchBarSpecifications.byRegionIds(regionIds))
+                .and(SearchBarSpecifications.byRentRange(minRent, maxRent))
+                .and(SearchBarSpecifications.byListingname(listingname));
+
+        // 查詢符合條件的所有 Listing 資料
+        List<Listing> listings = listingRepository.findAll(spec);
+
+        // 將 Listing 轉換為 ListingDTO 並填充圖片路徑
+        return listings.stream().map(listing -> {
+            // 使用 ModelMapper 將 Listing 轉換為 ListingDTO
+            ListingDTO listingDTO = modelMapper.map(listing, ListingDTO.class);
+
+            // 根據 Listing ID 取得所有對應的圖片資料
+            List<ListingImageDTO> listingImages = getListingImages(listing.getId());
+
+            // 提取每個圖片的路徑並存入 List<String>
+            List<String> imagePaths = listingImages.stream()
+                    .map(ListingImageDTO::getImagePath)
+                    .collect(Collectors.toList());
+
+            // 設置圖片路徑到 ListingDTO 的 imagePaths 屬性
+            listingDTO.setImagePaths(imagePaths);
+
+            return listingDTO;
+        }).collect(Collectors.toList());
+    }
 
 	@Override
 	public List<ListingImageDTO> getListingImages(Long listingId) {

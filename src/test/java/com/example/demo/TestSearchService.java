@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.demo.model.dto.ListingDTO;
-import com.example.demo.model.dto.ListingImageDTO;
 import com.example.demo.service.SearchService;
 
 @SpringBootTest
@@ -20,7 +19,7 @@ public class TestSearchService {
 	@Test
 	public void test() {
 		Long cityId = 1L;
-		List<Long> regionIds = Arrays.asList(159L, 160L, 3L, 4L);
+		List<Long> regionIds = Arrays.asList(159L, 160L, 43L, 42L);
 		Integer minRent = 100;
 		Integer maxRent = 30000;
 		String listingname = "臺北";

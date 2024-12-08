@@ -1,6 +1,7 @@
 package com.example.demo.model.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -47,4 +48,7 @@ public class ListingDTO {
 
 	@NotNull(message = "{listingDto.updatedAt.notNull}")
     private LocalDateTime updatedAt; // 房源更新日期
+	
+	private List<String> imagePaths; // 圖片路徑
+	
 }
