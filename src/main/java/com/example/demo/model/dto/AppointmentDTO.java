@@ -1,6 +1,9 @@
 package com.example.demo.model.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import org.hibernate.validator.constraints.Range;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,7 +25,11 @@ public class AppointmentDTO {
 	private Long userId; // 租客ID
 	
 	@NotNull(message = "{appointmentDto.appointmentDate.notNull}")
-	private LocalDateTime appointmentDate; // 預約日期時間
+	private LocalDate appointmentDate; // 預約時間編號
+	
+	@NotNull(message = "{appointmentDto.appointmentTime.notNull}")
+	@Range(min = 0, max = 23, message = "{appointmentDto.appointmentTime.range}")
+	private Long appointmentTime; // 預約日期時間
 	
 	@NotNull(message = "{appointmentDto.scheduleId.notNull}")
 	private Integer scheduleId; // 預約狀態（1 待確認、2 已確認、3 已完成、4 已取消）

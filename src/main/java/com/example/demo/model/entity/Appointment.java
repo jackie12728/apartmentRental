@@ -1,5 +1,6 @@
 package com.example.demo.model.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -27,13 +28,16 @@ public class Appointment {
 	@ManyToOne
     @JoinColumn(name = "user_id")
     private User user; // 租客ID
+	
+	@Column(nullable = false)
+    private LocalDate appointmentDate; // 預約時間編號
 
     @Column(nullable = false)
-    private LocalDateTime appointmentDate; // 預約日期時間
+    private Long appointmentTime; // 預約時間編號
 
     @ManyToOne
     @JoinColumn(name = "schedule_id")
-    private Schedule schedule; // 預約狀態（1 待確認、2 已確認、3 已完成、4 已取消）
+    private Schedule schedule; // 預約狀態（1 待確認、2 已確認、3 已完成）
 
     @Column(nullable = false)
     private LocalDateTime appointmentCreatedAt; // 預約請求日期

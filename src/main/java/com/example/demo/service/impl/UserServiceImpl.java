@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -61,6 +62,7 @@ public class UserServiceImpl implements UserService {
 		user.setSalt(salt);
 		user.setPasswordHash(passwordHash);
 		user.setPermission(permission.get());
+		user.setCreatedAt(LocalDateTime.now());
 		user.setUserStatus(userStatus.get());
 		user = userRepository.save(user);
 		

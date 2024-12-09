@@ -64,12 +64,4 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Review> reviews;
 
-	// 註冊時，在保存之前自動設置 createdAt
-	@PrePersist
-	public void prePersist() {
-		if (createdAt == null) {
-			createdAt = LocalDateTime.now(); // 設置為當前時間
-		}
-	}
-
 }
