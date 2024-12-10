@@ -30,10 +30,10 @@ public class Appointment {
     private User user; // 租客ID
 	
 	@Column(nullable = false)
-    private LocalDate appointmentDate; // 預約時間編號
+    private LocalDate appointmentDate; // 預約日期
 
     @Column(nullable = false)
-    private Long appointmentTime; // 預約時間編號
+    private Long appointmentTime; // 預約時間編號 (0~23)
 
     @ManyToOne
     @JoinColumn(name = "schedule_id")
