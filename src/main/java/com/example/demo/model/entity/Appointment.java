@@ -33,7 +33,7 @@ public class Appointment {
     private LocalDate appointmentDate; // 預約日期
 
     @Column(nullable = false)
-    private Long appointmentTime; // 預約時間編號 (0~23)
+    private String appointmentTime; // 預約時間
 
     @ManyToOne
     @JoinColumn(name = "schedule_id")

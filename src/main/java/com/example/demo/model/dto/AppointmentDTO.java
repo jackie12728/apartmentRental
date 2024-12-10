@@ -28,8 +28,7 @@ public class AppointmentDTO {
 	private LocalDate appointmentDate; // 預約日期
 	
 	@NotNull(message = "{appointmentDto.appointmentTime.notNull}")
-	@Range(min = 0, max = 23, message = "{appointmentDto.appointmentTime.range}")
-	private Long appointmentTime; // 預約時間編號
+	private String appointmentTime; // 預約時間
 	
 	@NotNull(message = "{appointmentDto.scheduleId.notNull}")
 	private Integer scheduleId; // 預約狀態（1 待確認、2 已確認、3 已完成、4 已取消）
