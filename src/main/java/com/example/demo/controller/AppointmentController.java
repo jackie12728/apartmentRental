@@ -37,9 +37,8 @@ public class AppointmentController {
 	
 	// 取得預約時間
 	@GetMapping("/{listingId}")
-	@CheckUserSession
+//	@CheckUserSession
 	public ResponseEntity<ApiResponse<List<AppointmentDTO>>> getAppointments(@PathVariable Long listingId) {
-		System.out.print("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 		List<AppointmentDTO> appointmentDTOs = appointmentService.getAppointments(listingId);
 		if(appointmentDTOs.isEmpty()) {
 			return ResponseEntity.ok(ApiResponse.success("沒有預約紀錄", appointmentDTOs));
