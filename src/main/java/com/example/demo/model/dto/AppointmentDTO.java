@@ -3,8 +3,6 @@ package com.example.demo.model.dto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import org.hibernate.validator.constraints.Range;
-
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +39,7 @@ public class AppointmentController {
 	@GetMapping("/{listingId}")
 	@CheckUserSession
 	public ResponseEntity<ApiResponse<List<AppointmentDTO>>> getAppointments(@PathVariable Long listingId) {
+		System.out.print("1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 		List<AppointmentDTO> appointmentDTOs = appointmentService.getAppointments(listingId);
 		if(appointmentDTOs.isEmpty()) {
 			return ResponseEntity.ok(ApiResponse.success("沒有預約紀錄", appointmentDTOs));

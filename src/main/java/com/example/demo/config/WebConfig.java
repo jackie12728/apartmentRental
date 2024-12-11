@@ -17,4 +17,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowCredentials(true)  // 允許攜帶 Cookie
                 .maxAge(3600);  // 設置預檢請求的有效時間（單位：秒）
     }
+
 }
