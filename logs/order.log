@@ -1,359 +1,156 @@
-2024-12-12 00:13:37 INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
-2024-12-12 00:13:37 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
-2024-12-12 00:13:37 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-12 00:13:37 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2024-12-12 00:13:37 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2024-12-12 00:36:54 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-2024-12-12 00:36:54 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Starting SpringbootMvcApartmentRentalApplication using Java 21.0.4 with PID 2644 (C:\Jackie\apartmentRental\target\classes started by as212 in C:\Jackie\apartmentRental)
-2024-12-12 00:36:54 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - No active profile set, falling back to 1 default profile: "default"
-2024-12-12 00:36:55 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-12 00:36:55 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 140 ms. Found 8 JPA repository interfaces.
-2024-12-12 00:36:57 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2024-12-12 00:36:57 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2024-12-12 00:36:57 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-12-12 00:36:57 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
-2024-12-12 00:36:57 INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2024-12-12 00:36:57 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-12-12 00:36:57 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2739 ms
-2024-12-12 00:36:57 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-12 00:36:57 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-12-12 00:36:57 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2024-12-12 00:36:58 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-12 00:36:58 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-12-12 00:36:59 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-2024-12-12 00:36:59 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2024-12-12 00:36:59 WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
-org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
-	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
-	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:292)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at com.example.demo.SpringbootMvcApartmentRentalApplication.main(SpringbootMvcApartmentRentalApplication.java:10)
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:439)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
-	... 35 common frames omitted
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
-	... 48 common frames omitted
-Caused by: java.net.ConnectException: Connection refused: getsockopt
-	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
-	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
-	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
-	at java.base/java.net.Socket.connect(Socket.java:751)
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
-	... 51 common frames omitted
-2024-12-12 00:36:59 ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-2024-12-12 00:36:59 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-2024-12-12 00:36:59 INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-2024-12-12 00:36:59 INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-12-12 00:36:59 ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at com.example.demo.SpringbootMvcApartmentRentalApplication.main(SpringbootMvcApartmentRentalApplication.java:10)
-Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:276)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
-	... 15 common frames omitted
-Caused by: org.hibernate.HibernateException: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:191)
-	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentWithDefaults(JdbcEnvironmentInitiator.java:153)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:364)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
-	... 30 common frames omitted
-2024-12-12 00:38:46 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-2024-12-12 00:38:46 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Starting SpringbootMvcApartmentRentalApplication using Java 21.0.4 with PID 4972 (C:\Jackie\apartmentRental\target\classes started by as212 in C:\Jackie\apartmentRental)
-2024-12-12 00:38:46 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - No active profile set, falling back to 1 default profile: "default"
-2024-12-12 00:38:47 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-12 00:38:47 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 8 JPA repository interfaces.
-2024-12-12 00:38:48 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2024-12-12 00:38:48 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2024-12-12 00:38:48 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-12-12 00:38:48 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
-2024-12-12 00:38:48 INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2024-12-12 00:38:48 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-12-12 00:38:48 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2066 ms
-2024-12-12 00:38:48 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-12 00:38:48 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-12-12 00:38:48 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2024-12-12 00:38:49 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-12 00:38:49 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-12-12 00:38:50 WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-2024-12-12 00:38:50 ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2024-12-12 00:38:50 WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
-org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
-	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
-	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:292)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at com.example.demo.SpringbootMvcApartmentRentalApplication.main(SpringbootMvcApartmentRentalApplication.java:10)
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:439)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
-	... 35 common frames omitted
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:88)
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
-	... 48 common frames omitted
-Caused by: java.net.ConnectException: Connection refused: getsockopt
-	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
-	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
-	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
-	at java.base/java.net.Socket.connect(Socket.java:751)
-	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
-	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:62)
-	... 51 common frames omitted
-2024-12-12 00:38:50 ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-2024-12-12 00:38:50 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-2024-12-12 00:38:50 INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-2024-12-12 00:38:50 INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-12-12 00:38:50 ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at com.example.demo.SpringbootMvcApartmentRentalApplication.main(SpringbootMvcApartmentRentalApplication.java:10)
-Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:276)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
-	... 15 common frames omitted
-Caused by: org.hibernate.HibernateException: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:191)
-	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentWithDefaults(JdbcEnvironmentInitiator.java:153)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:364)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
-	... 30 common frames omitted
-2024-12-12 00:39:42 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-2024-12-12 00:39:42 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Starting SpringbootMvcApartmentRentalApplication using Java 21.0.4 with PID 5280 (C:\Jackie\apartmentRental\target\classes started by as212 in C:\Jackie\apartmentRental)
-2024-12-12 00:39:42 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - No active profile set, falling back to 1 default profile: "default"
-2024-12-12 00:39:43 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-12 00:39:43 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 100 ms. Found 8 JPA repository interfaces.
-2024-12-12 00:39:44 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2024-12-12 00:39:44 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2024-12-12 00:39:44 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2024-12-12 00:39:44 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
-2024-12-12 00:39:44 INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2024-12-12 00:39:44 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2024-12-12 00:39:44 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1989 ms
-2024-12-12 00:39:44 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-12 00:39:44 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-12-12 00:39:44 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2024-12-12 00:39:45 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-12 00:39:45 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2024-12-12 00:39:45 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@189633f2
-2024-12-12 00:39:45 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2024-12-12 00:39:47 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-12 00:39:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-12 00:39:48 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-12 00:39:48 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
-2024-12-12 00:39:49 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2024-12-12 00:39:49 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2024-12-12 00:39:49 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Started SpringbootMvcApartmentRentalApplication in 7.286 seconds (process running for 8.209)
-2024-12-12 00:39:56 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-12 00:39:56 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2024-12-12 00:39:56 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2024-12-12 01:36:54 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14m7s882ms620µs400ns).
+2024-12-13 12:08:02 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-13 12:08:02 INFO  c.example.demo.TestGetAppointments - Starting TestGetAppointments using Java 21.0.4 with PID 1036 (started by NTPU in E:\ApartmentRental\apartmentRental)
+2024-12-13 12:08:02 INFO  c.example.demo.TestGetAppointments - No active profile set, falling back to 1 default profile: "default"
+2024-12-13 12:08:02 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13 12:08:02 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 8 JPA repository interfaces.
+2024-12-13 12:08:03 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13 12:08:03 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13 12:08:03 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-13 12:08:03 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13 12:08:03 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-13 12:08:03 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23321be7
+2024-12-13 12:08:03 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-13 12:08:04 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13 12:08:04 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 12:08:05 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13 12:08:05 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2024-12-13 12:08:05 INFO  c.example.demo.TestGetAppointments - Started TestGetAppointments in 3.477 seconds (process running for 4.213)
+2024-12-13 12:08:05 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 12:08:05 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-13 12:08:05 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-13 12:08:39 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-13 12:08:39 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Starting SpringbootMvcApartmentRentalApplication using Java 21.0.4 with PID 2556 (E:\ApartmentRental\apartmentRental\target\classes started by NTPU in E:\ApartmentRental\apartmentRental)
+2024-12-13 12:08:39 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-13 12:08:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13 12:08:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 40 ms. Found 8 JPA repository interfaces.
+2024-12-13 12:08:39 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-13 12:08:39 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-13 12:08:40 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-13 12:08:40 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-13 12:08:40 INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-12-13 12:08:40 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-13 12:08:40 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 914 ms
+2024-12-13 12:08:40 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13 12:08:40 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13 12:08:40 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-13 12:08:40 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13 12:08:40 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-13 12:08:40 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e52d2f2
+2024-12-13 12:08:40 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-13 12:08:41 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13 12:08:41 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 12:08:41 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13 12:08:41 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2024-12-13 12:08:41 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-13 12:08:41 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-13 12:08:41 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Started SpringbootMvcApartmentRentalApplication in 2.746 seconds (process running for 3.073)
+2024-12-13 12:08:45 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-13 12:08:45 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-13 12:08:45 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-12-13 12:37:37 INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-12-13 12:37:37 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-13 12:37:37 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 12:37:37 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-13 12:37:37 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-13 12:37:39 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-13 12:37:39 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Starting SpringbootMvcApartmentRentalApplication using Java 21.0.4 with PID 4384 (E:\ApartmentRental\apartmentRental\target\classes started by NTPU in E:\ApartmentRental\apartmentRental)
+2024-12-13 12:37:39 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-13 12:37:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13 12:37:39 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 8 JPA repository interfaces.
+2024-12-13 12:37:40 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-13 12:37:40 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-13 12:37:40 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-13 12:37:40 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-13 12:37:40 INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-12-13 12:37:40 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-13 12:37:40 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 961 ms
+2024-12-13 12:37:40 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13 12:37:40 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13 12:37:40 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-13 12:37:40 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13 12:37:40 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-13 12:37:40 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@299eca90
+2024-12-13 12:37:40 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-13 12:37:41 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13 12:37:41 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 12:37:41 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13 12:37:41 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2024-12-13 12:37:42 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-13 12:37:42 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-13 12:37:42 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Started SpringbootMvcApartmentRentalApplication in 2.79 seconds (process running for 3.155)
+2024-12-13 12:37:48 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-13 12:37:48 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-13 12:37:48 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-12-13 16:07:47 INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-12-13 16:07:47 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-13 16:07:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 16:07:47 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-13 16:07:47 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-13 16:07:49 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-13 16:07:49 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Starting SpringbootMvcApartmentRentalApplication using Java 21.0.4 with PID 8872 (E:\ApartmentRental\apartmentRental\target\classes started by NTPU in E:\ApartmentRental\apartmentRental)
+2024-12-13 16:07:49 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-13 16:07:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13 16:07:49 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 45 ms. Found 8 JPA repository interfaces.
+2024-12-13 16:07:50 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-13 16:07:50 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-13 16:07:50 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-13 16:07:50 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-13 16:07:50 INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-12-13 16:07:50 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-13 16:07:50 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 983 ms
+2024-12-13 16:07:50 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13 16:07:50 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13 16:07:50 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-13 16:07:50 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13 16:07:50 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-13 16:07:50 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1a67f8b4
+2024-12-13 16:07:50 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-13 16:07:51 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13 16:07:51 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 16:07:51 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13 16:07:51 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2024-12-13 16:07:51 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-13 16:07:51 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-13 16:07:51 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Started SpringbootMvcApartmentRentalApplication in 2.863 seconds (process running for 3.236)
+2024-12-13 16:07:56 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-13 16:07:56 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-13 16:07:56 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2024-12-13 17:12:02 INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-12-13 17:12:02 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-13 17:12:02 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 17:12:02 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-13 17:12:02 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-13 17:12:03 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-12-13 17:12:03 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Starting SpringbootMvcApartmentRentalApplication using Java 21.0.4 with PID 7708 (E:\ApartmentRental\apartmentRental\target\classes started by NTPU in E:\ApartmentRental\apartmentRental)
+2024-12-13 17:12:03 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-13 17:12:04 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-13 17:12:04 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 8 JPA repository interfaces.
+2024-12-13 17:12:04 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-13 17:12:04 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-13 17:12:04 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-13 17:12:04 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-13 17:12:04 INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-12-13 17:12:04 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-13 17:12:04 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 984 ms
+2024-12-13 17:12:05 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-13 17:12:05 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-13 17:12:05 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-13 17:12:05 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-13 17:12:05 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-13 17:12:05 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ae6d078
+2024-12-13 17:12:05 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-13 17:12:05 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-13 17:12:06 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 17:12:06 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-13 17:12:06 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2024-12-13 17:12:06 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-13 17:12:06 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-13 17:12:06 INFO  c.e.d.SpringbootMvcApartmentRentalApplication - Started SpringbootMvcApartmentRentalApplication in 2.871 seconds (process running for 3.236)
+2024-12-13 17:15:18 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-13 17:15:18 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-13 17:15:18 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-12-13 17:32:08 INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-12-13 17:32:08 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-12-13 17:32:08 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-13 17:32:08 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-13 17:32:08 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

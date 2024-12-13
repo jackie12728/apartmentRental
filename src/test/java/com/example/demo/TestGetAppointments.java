@@ -17,7 +17,7 @@ public class TestGetAppointments {
 	
 	@Test
 	public void test() {
-		Long listingId = 1L;
+		Long listingId = 35L;
 		List<AppointmentDTO> appointmentDTOs = appointmentService.getAppointments(listingId);
 		System.out.println(appointmentDTOs);
 	}

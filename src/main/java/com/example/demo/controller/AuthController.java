@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.dto.LoginDTO;
 import com.example.demo.model.dto.RegisterDTO;
+import com.example.demo.model.dto.SimpleUserIdDTO;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.UserService;
@@ -80,4 +81,17 @@ public class AuthController {
 		loginDTO.setIsLoggedIn(true);
 		return ResponseEntity.ok(ApiResponse.success("此人已登入資訊", loginDTO));
 	}
+	
+	// 取得當前使用者的 ID
+	@GetMapping("/getCurrentUserId")
+	public ResponseEntity<ApiResponse<SimpleUserIdDTO>> getCurrentUserId(HttpSession session) {
+	    UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");
+	    if (userDTO == null) {
+	        return ResponseEntity.status(401).body(ApiResponse.error(401, "未登入"));
+	    }
+
+	    SimpleUserIdDTO simpleUserIdDTO = new SimpleUserIdDTO(userDTO.getId());
+	    return ResponseEntity.ok(ApiResponse.success("取得當前用戶成功", simpleUserIdDTO));
+	}
+
 }

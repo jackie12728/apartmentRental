@@ -37,14 +37,18 @@ public class AppointmentController {
 	
 	// 取得預約時間
 	@GetMapping("/{listingId}")
-//	@CheckUserSession
 	public ResponseEntity<ApiResponse<List<AppointmentDTO>>> getAppointments(@PathVariable Long listingId) {
-		List<AppointmentDTO> appointmentDTOs = appointmentService.getAppointments(listingId);
-		if(appointmentDTOs.isEmpty()) {
-			return ResponseEntity.ok(ApiResponse.success("沒有預約紀錄", appointmentDTOs));
+		try {
+			List<AppointmentDTO> appointmentDTOs = appointmentService.getAppointments(listingId);
+			if(appointmentDTOs.isEmpty()) {
+				return ResponseEntity.ok(ApiResponse.success("沒有預約紀錄", appointmentDTOs));
+			}
+			
+			return ResponseEntity.ok(ApiResponse.success("查詢預約成功", appointmentDTOs));
+		} catch (Exception e) {
+			// 捕獲其他異常，並返回通用錯誤訊息
+	        return ResponseEntity.status(500).body(ApiResponse.error(500, "系統錯誤，請稍後再試"));
 		}
-		
-		return ResponseEntity.ok(ApiResponse.success("查詢預約成功", appointmentDTOs));
 	}
 	
 	// 儲存預約
