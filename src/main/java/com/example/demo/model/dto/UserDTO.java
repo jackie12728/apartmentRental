@@ -15,8 +15,8 @@ public class UserDTO {
 	@NotNull(message = "{userDto.id.notNull}")
 	private Long id; // 使用者 ID
 
-	@NotNull(message = "{userDto.userName.notNull}")
-    private String userName; // 使用者名稱
+	@NotNull(message = "{userDto.username.notNull}")
+    private String username; // 使用者名稱
 
 	@NotNull(message = "{userDto.email.notNull}")
     private String email; // 使用者 email 帳號

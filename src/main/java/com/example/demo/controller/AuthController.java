@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.dto.LoginDTO;
 import com.example.demo.model.dto.RegisterDTO;
-import com.example.demo.model.dto.SimpleUserIdDTO;
+import com.example.demo.model.dto.SimpleUserDTO;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.UserService;
@@ -25,10 +25,11 @@ import jakarta.servlet.http.HttpSession;
  * ----------------------------------
  * Servlet-Path: /auth
  * ----------------------------------
- * POST /login      登入
- * POST /register   註冊
- * GET  /logout     登出
- * GET  /isLoggedIn 判斷目前的連線是否有登入
+ * POST /login          登入
+ * POST /register       註冊
+ * GET  /logout         登出
+ * GET  /isLoggedIn     判斷目前的連線是否有登入
+ * GET  /getCurrentUser 取得當前使用者的 ID、名稱
  * */
 
 @RestController
@@ -83,14 +84,14 @@ public class AuthController {
 	}
 	
 	// 取得當前使用者的 ID
-	@GetMapping("/getCurrentUserId")
-	public ResponseEntity<ApiResponse<SimpleUserIdDTO>> getCurrentUserId(HttpSession session) {
+	@GetMapping("/getCurrentUser")
+	public ResponseEntity<ApiResponse<SimpleUserDTO>> getCurrentUser(HttpSession session) {
 	    UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");
 	    if (userDTO == null) {
 	        return ResponseEntity.status(401).body(ApiResponse.error(401, "未登入"));
 	    }
 
-	    SimpleUserIdDTO simpleUserIdDTO = new SimpleUserIdDTO(userDTO.getId());
+	    SimpleUserDTO simpleUserIdDTO = new SimpleUserDTO(userDTO.getId(), userDTO.getUsername());
 	    return ResponseEntity.ok(ApiResponse.success("取得當前用戶成功", simpleUserIdDTO));
 	}
 

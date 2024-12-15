@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AppointmentDTO {
 	
-	@NotNull(message = "{appointmentDto.id.notNull}")
 	private Long id; // 預約編號
 	
 	@NotNull(message = "{appointmentDto.listingId.notNull}")
