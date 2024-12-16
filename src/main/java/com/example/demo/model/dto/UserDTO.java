@@ -25,11 +25,11 @@ public class UserDTO {
     private String phoneNumber; // 使用者電話號碼
 
     @NotNull(message = "{userDto.permissionId.notNull}")
-    private Integer permissionId; // 角色權限，租客 1、房東 2、系統管理員 3
+    private Long permissionId; // 角色權限，租客 1、房東 2、系統管理員 3
 
     @NotNull(message = "{userDto.createdAt.notNull}")
     private LocalDateTime createdAt; // 註冊日期
 
     @NotNull(message = "{userDto.statusId.notNull}")
-	private Integer statusId; // 使用者狀態 (1 啟用、0 停用)
+	private Long statusId; // 使用者狀態 (1 啟用、0 停用)
 }

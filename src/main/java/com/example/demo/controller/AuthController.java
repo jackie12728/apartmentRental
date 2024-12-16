@@ -91,7 +91,7 @@ public class AuthController {
 	        return ResponseEntity.status(401).body(ApiResponse.error(401, "未登入"));
 	    }
 
-	    SimpleUserDTO simpleUserIdDTO = new SimpleUserDTO(userDTO.getId(), userDTO.getUsername());
+	    SimpleUserDTO simpleUserIdDTO = new SimpleUserDTO(userDTO.getId(), userDTO.getUsername(), userDTO.getPhoneNumber(), userDTO.getPermissionId());
 	    return ResponseEntity.ok(ApiResponse.success("取得當前用戶成功", simpleUserIdDTO));
 	}
 

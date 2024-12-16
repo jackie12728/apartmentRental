@@ -15,4 +15,10 @@ public class SimpleUserDTO {
 	
 	@NotNull(message = "{SimpleUserDTO.username.notNull}")
 	private String username; // 使用者名稱
+	
+	@NotNull(message = "{SimpleUserDTO.phoneNumber.notNull}")
+	private String phoneNumber; // 使用者電話號碼
+	
+	@NotNull(message = "{SimpleUserDTO.permissionId.notNull}")
+	private Long permissionId; // 角色權限
 }
