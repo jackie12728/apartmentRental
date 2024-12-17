@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.dto.AppointmentDTO;
+import com.example.demo.model.dto.AppointmentListingDTO;
 import com.example.demo.model.dto.CityDTO;
 import com.example.demo.model.dto.ListingDTO;
 import com.example.demo.model.dto.ListingImageDTO;
@@ -95,9 +95,18 @@ public class SearchServiceImpl implements SearchService {
 	}
 
 	@Override
-	public List<AppointmentDTO> getUserAppointments(Long userId) {
-		return appointmentRepository.findAppointmentsWithListingsByUserId(userId).stream()
-				.map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
+	public List<AppointmentListingDTO> getUserAppointments(Long userId) {
+		List<Object[]> results = appointmentRepository.findAppointmentsWithListingsByUserId(userId);
+		
+		return results.stream().map(record -> 
+	    	new AppointmentListingDTO(
+	    			((Number) record[0]).longValue(),   // listingId
+                    ((java.sql.Date) record[1]).toLocalDate(), // appointmentDate
+                    (String) record[2], // appointmentTime
+                    (String) record[3], // address
+                    (String) record[4], // description
+                    (String) record[5])  // listingname
+				)
 				.collect(Collectors.toList());
 	}
 
