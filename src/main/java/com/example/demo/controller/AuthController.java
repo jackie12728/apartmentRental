@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.aop.CheckUserSession;
 import com.example.demo.model.dto.LoginDTO;
 import com.example.demo.model.dto.RegisterDTO;
 import com.example.demo.model.dto.SimpleUserDTO;
@@ -25,11 +26,12 @@ import jakarta.servlet.http.HttpSession;
  * ----------------------------------
  * Servlet-Path: /auth
  * ----------------------------------
- * POST /login          登入
- * POST /register       註冊
- * GET  /logout         登出
- * GET  /isLoggedIn     判斷目前的連線是否有登入
- * GET  /getCurrentUser 取得當前使用者的 ID、名稱
+ * POST /login                 登入
+ * POST /register              註冊
+ * GET  /logout                登出
+ * GET  /isLoggedIn            判斷目前的連線是否有登入
+ * GET  /getCurrentUser        取得當前使用者的 ID、名稱
+ * POST /updateUserPhoneNumber 更新使用者電話號碼
  * */
 
 @RestController
@@ -93,6 +95,19 @@ public class AuthController {
 
 	    SimpleUserDTO simpleUserIdDTO = new SimpleUserDTO(userDTO.getId(), userDTO.getUsername(), userDTO.getPhoneNumber(), userDTO.getPermissionId());
 	    return ResponseEntity.ok(ApiResponse.success("取得當前用戶成功", simpleUserIdDTO));
+	}
+	
+	// 更新使用者電話號碼
+	@PostMapping("/updateUserPhoneNumber")
+	@CheckUserSession
+	public ResponseEntity<ApiResponse<String>> updateUserPhoneNumber(@RequestBody SimpleUserDTO simpleUserDTO) {
+		Optional<UserDTO> optUserDTO = userService.updateUserPhoneNumber(simpleUserDTO);
+		
+		if(optUserDTO.isEmpty()) {
+			return ResponseEntity.status(404).body(ApiResponse.error(404, "更新電話號碼失敗"));
+		}
+		
+		return ResponseEntity.ok(ApiResponse.success("更新電話號碼成功", "更新電話號碼成功"));
 	}
 
 }

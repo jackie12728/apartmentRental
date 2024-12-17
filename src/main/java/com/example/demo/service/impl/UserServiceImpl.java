@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.dto.LoginDTO;
 import com.example.demo.model.dto.RegisterDTO;
+import com.example.demo.model.dto.SimpleUserDTO;
 import com.example.demo.model.dto.UserDTO;
 import com.example.demo.model.entity.Permission;
 import com.example.demo.model.entity.User;
@@ -67,6 +68,22 @@ public class UserServiceImpl implements UserService {
 		user = userRepository.save(user);
 		
 		return Optional.of(modelMapper.map(user, UserDTO.class));
+	}
+
+	@Override
+	public Optional<UserDTO> updateUserPhoneNumber(SimpleUserDTO simpleUserDTO) {
+		
+		// 1. 根據 ID 查找目標 User
+	    return userRepository.findById(simpleUserDTO.getId()).map(existingUser -> {
+	        // 2. 更新 phoneNumber
+	        existingUser.setPhoneNumber(simpleUserDTO.getPhoneNumber());
+	        
+	        // 3. 保存更新後的 User
+	        User updatedUser = userRepository.save(existingUser);
+	        
+	        // 4. 映射為 UserDTO 返回
+	        return modelMapper.map(updatedUser, UserDTO.class);
+	    });
 	}
 
 }

@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.dto.AppointmentDTO;
 import com.example.demo.model.dto.CityDTO;
 import com.example.demo.model.dto.ListingDTO;
 import com.example.demo.model.dto.ListingImageDTO;
 import com.example.demo.model.dto.RegionDTO;
 import com.example.demo.model.entity.Listing;
+import com.example.demo.repository.AppointmentRepository;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.ListingImageRepository;
 import com.example.demo.repository.ListingRepository;
@@ -33,6 +35,9 @@ public class SearchServiceImpl implements SearchService {
 	
 	@Autowired
 	private ListingImageRepository listingImageRepository;
+	
+	@Autowired
+	private AppointmentRepository appointmentRepository;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -86,6 +91,13 @@ public class SearchServiceImpl implements SearchService {
 	public List<ListingImageDTO> getListingImages(Long listingId) {
 		return listingImageRepository.findByListingIdOrderByIdAsc(listingId).stream()
 				.map(listingImage -> modelMapper.map(listingImage, ListingImageDTO.class))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<AppointmentDTO> getUserAppointments(Long userId) {
+		return appointmentRepository.findAppointmentsWithListingsByUserId(userId).stream()
+				.map(appointment -> modelMapper.map(appointment, AppointmentDTO.class))
 				.collect(Collectors.toList());
 	}
 
