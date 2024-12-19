@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.aop.CheckUserSession;
 import com.example.demo.model.dto.AppointmentListingDTO;
 import com.example.demo.model.dto.CityDTO;
 import com.example.demo.model.dto.ListingDTO;
@@ -107,6 +108,7 @@ public class SearchController {
     }
     
     @GetMapping("/userAppointments/{userId}")
+    @CheckUserSession
     public ResponseEntity<ApiResponse<List<AppointmentListingDTO>>> getUserAppointments(
     		@PathVariable Long userId) {
     	List<AppointmentListingDTO> appointmentListingDTOs = searchService.getUserAppointments(userId);

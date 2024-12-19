@@ -42,6 +42,7 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 	
+	// 登入
 	@PostMapping("/login")
 	public ResponseEntity<ApiResponse<LoginDTO>> login(@RequestBody LoginDTO loginDTO, HttpSession session) {
 		
@@ -56,6 +57,7 @@ public class AuthController {
 		return ResponseEntity.ok(ApiResponse.success("登入成功", null));
 	}
 	
+	// 註冊
 	@PostMapping("/register")
 	public ResponseEntity<ApiResponse<String>> register(@RequestBody RegisterDTO registerDTO) {
 		
@@ -67,12 +69,14 @@ public class AuthController {
 		return ResponseEntity.ok(ApiResponse.success("註冊成功", "註冊成功"));
 	}
 	
+	// 登出
 	@GetMapping("/logout")
 	public ResponseEntity<ApiResponse<String>> logout(HttpSession session) {
 		session.invalidate(); // session 失效
 		return ResponseEntity.ok(ApiResponse.success("登出結果", "登出成功"));
 	}
 	
+	// 檢查登入狀態
 	@GetMapping("/isLoggedIn")
 	public ResponseEntity<ApiResponse<LoginDTO>> isLoggedIn(HttpSession session) {
 		UserDTO userDTO = (UserDTO)session.getAttribute("userDTO");
@@ -85,7 +89,7 @@ public class AuthController {
 		return ResponseEntity.ok(ApiResponse.success("此人已登入資訊", loginDTO));
 	}
 	
-	// 取得當前使用者的 ID
+	// 取得當前使用者
 	@GetMapping("/getCurrentUser")
 	public ResponseEntity<ApiResponse<SimpleUserDTO>> getCurrentUser(HttpSession session) {
 	    UserDTO userDTO = (UserDTO) session.getAttribute("userDTO");
