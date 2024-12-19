@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppointmentListingDTO {
-
-	@NotNull(message = "{appointmentListingDTO.listingId.notNull}")
-	private Long listingId; // 房源ID
 	
 	@NotNull(message = "{appointmentListingDTO.appointmentDate.notNull}")
 	private LocalDate appointmentDate; // 預約日期
@@ -22,9 +19,6 @@ public class AppointmentListingDTO {
 	
 	@NotNull(message = "{appointmentListingDTO.address.notNull}")
     private String address; // 房源地址
-	
-	@NotNull(message = "{appointmentListingDTO.description.notNull}")
-    private String description; // 房源描述
 	
 	@NotNull(message = "{appointmentListingDTO.listingname.notNull}")
     private String listingname; // 房源名稱

@@ -100,12 +100,10 @@ public class SearchServiceImpl implements SearchService {
 		
 		return results.stream().map(record -> 
 	    	new AppointmentListingDTO(
-	    			((Number) record[0]).longValue(),   // listingId
-                    ((java.sql.Date) record[1]).toLocalDate(), // appointmentDate
-                    (String) record[2], // appointmentTime
-                    (String) record[3], // address
-                    (String) record[4], // description
-                    (String) record[5])  // listingname
+                    ((java.sql.Date) record[0]).toLocalDate(), // appointmentDate
+                    (String) record[1], // appointmentTime
+                    (String) record[2], // address
+                    (String) record[3]) // listingname
 				)
 				.collect(Collectors.toList());
 	}
