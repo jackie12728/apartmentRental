@@ -22,5 +22,8 @@ public class AppointmentListingDTO {
 	
 	@NotNull(message = "{appointmentListingDTO.listingname.notNull}")
     private String listingname; // 房源名稱
+	
+	@NotNull(message = "{appointmentListingDTO.scheduleName.notNull}")
+	private String scheduleName; // 預約狀態名稱
 
 }

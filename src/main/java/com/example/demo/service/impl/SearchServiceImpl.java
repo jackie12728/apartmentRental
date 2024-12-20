@@ -103,7 +103,8 @@ public class SearchServiceImpl implements SearchService {
                     ((java.sql.Date) record[0]).toLocalDate(), // appointmentDate
                     (String) record[1], // appointmentTime
                     (String) record[2], // address
-                    (String) record[3]) // listingname
+                    (String) record[3], // listingname
+                    (String) record[4]) // 預約狀態名稱
 				)
 				.collect(Collectors.toList());
 	}

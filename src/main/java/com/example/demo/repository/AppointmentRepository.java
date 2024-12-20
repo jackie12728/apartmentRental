@@ -15,9 +15,10 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 	List<Appointment> findByListingId(Long listingId);
 	
 	@Query(value = """
-					SELECT appointment_date, appointment_time, address, listingname 
-					FROM appointment a LEFT JOIN listings l ON a.listing_id = l.id 
-					WHERE a.user_id = :userId 
+					SELECT appointment_date, appointment_time, address, listingname, schedule_name
+					FROM appointment a LEFT JOIN listings l ON a.listing_id = l.id
+					LEFT JOIN schedule s ON a.schedule_id = s.id
+					WHERE a.user_id = :userId
 					ORDER BY appointment_date, appointment_time
 				   """, nativeQuery = true)
 	List<Object[]> findAppointmentsWithListingsByUserId(@Param("userId") Long userId);
