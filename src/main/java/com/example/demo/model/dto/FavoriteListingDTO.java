@@ -9,5 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FavoriteListingDTO {
 	private Long id;
-	private String name;
+	private String listingname;
+	private String address; // 房源地址
+	private Integer rent; // 房源租金
 }

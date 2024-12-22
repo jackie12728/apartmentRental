@@ -30,7 +30,7 @@ import jakarta.servlet.http.HttpSession;
  * POST /register              註冊
  * GET  /logout                登出
  * GET  /isLoggedIn            判斷目前的連線是否有登入
- * GET  /getCurrentUser        取得當前使用者的 ID、名稱
+ * GET  /getCurrentUser        取得當前使用者的 ID、名稱、電話號碼、權限
  * POST /updateUserPhoneNumber 更新使用者電話號碼
  * */
 
