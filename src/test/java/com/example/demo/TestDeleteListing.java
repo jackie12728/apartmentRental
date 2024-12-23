@@ -16,7 +16,7 @@ public class TestDeleteListing {
 	
 	@Test
 	public void test() {
-		Long listingId = 43L;
+		Long listingId = 17L;
 		Optional<ListingDTO> optListing = listingService.deleteListing(listingId);
 		System.out.println("optListing: " + optListing);
 	}

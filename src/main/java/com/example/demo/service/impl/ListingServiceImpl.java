@@ -12,7 +12,6 @@ import com.example.demo.model.entity.City;
 import com.example.demo.model.entity.Listing;
 import com.example.demo.model.entity.Region;
 import com.example.demo.model.entity.Rental;
-import com.example.demo.model.entity.User;
 import com.example.demo.repository.CityRepository;
 import com.example.demo.repository.ListingRepository;
 import com.example.demo.repository.RegionRepository;
@@ -75,51 +74,28 @@ public class ListingServiceImpl implements ListingService {
 	}
 
 	// 刪除房屋
-//	@Override
-//	@Transactional
-//	public Optional<ListingDTO> deleteListing(Long listingId) {
-//		Optional<Listing> OptListing = listingRepository.findById(listingId);
-//	    
-//	    if (OptListing.isPresent()) {
-//	        Listing listing = OptListing.get();
-//	        
-//	        // 移除與用戶的關注關聯
-//	        for (User user : listing.getFavoriteUsers()) {
-//	            user.getFavoriteListings().remove(listing);
-//	        }
-//
-//	        // 刪除房源（連帶刪除 appointments, listingImages, reviews）
-//	        listingRepository.delete(listing);
-//	        
-//	        // 返回刪除的房源資訊
-//	        return Optional.of(modelMapper.map(listing, ListingDTO.class));
-//	    } else {
-//	        throw new RuntimeException("找不到要刪除的房源");
-//	    }
-//	}
-	
 	@Override
 	@Transactional
 	public Optional<ListingDTO> deleteListing(Long listingId) {
-	    // 確認房源是否存在
+		// 檢查 Listing 是否存在
 	    Optional<Listing> listingOptional = listingRepository.findById(listingId);
 	    if (!listingOptional.isPresent()) {
-	        // 如果房源不存在，回傳空的 Optional
+	        System.out.println("Listing not found for ID: " + listingId);
 	        return Optional.empty();
 	    }
-
-	    // 獲取房源資料
 	    Listing listing = listingOptional.get();
+	    
+	    listingRepository.deleteUserListingByListingId(listingId);
+	    listingRepository.deleteAppointmentByListingId(listingId);
+	    listingRepository.deleteListingImageByListingId(listingId);
+	    listingRepository.deleteReviewByListingId(listingId);
+	    listingRepository.deleteListingByListingId(listingId);
 
-	    // 刪除房源
-	    listingRepository.delete(listing);
-
-	    // 使用 ModelMapper 將刪除的房源轉換為 DTO
+	    // 確認刪除成功後返回
 	    ListingDTO listingDTO = modelMapper.map(listing, ListingDTO.class);
-
-	    // 回傳被刪除的房源資料
 	    return Optional.of(listingDTO);
 	}
+
 
 
 }
