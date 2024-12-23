@@ -67,9 +67,6 @@ public class Listing {
     private List<ListingImage> listingImages;
     
     @OneToMany(mappedBy = "listing", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Order> orders;
-    
-    @OneToMany(mappedBy = "listing", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Review> reviews;
     
     @ManyToMany(mappedBy = "favoriteListings")

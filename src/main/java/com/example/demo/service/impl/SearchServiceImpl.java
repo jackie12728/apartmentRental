@@ -58,11 +58,13 @@ public class SearchServiceImpl implements SearchService {
 	
 	@Override
 	public List<ListingDTO> getListings(Long cityId, List<Long> regionIds, Integer minRent, Integer maxRent, String listingname) {
-        // 構建查詢條件
+		Long rentalId = 1L;
+		// 構建查詢條件
         Specification<Listing> spec = Specification.where(SearchBarSpecifications.byCityId(cityId))
                 .and(SearchBarSpecifications.byRegionIds(regionIds))
                 .and(SearchBarSpecifications.byRentRange(minRent, maxRent))
-                .and(SearchBarSpecifications.byListingname(listingname));
+                .and(SearchBarSpecifications.byListingname(listingname))
+                .and(SearchBarSpecifications.byRentalId(rentalId));
 
         // 查詢符合條件的所有 Listing 資料
         List<Listing> listings = listingRepository.findAll(spec);

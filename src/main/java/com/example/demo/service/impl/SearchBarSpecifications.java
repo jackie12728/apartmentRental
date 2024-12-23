@@ -47,4 +47,10 @@ public class SearchBarSpecifications {
             listingname == null || listingname.isEmpty() ? null : 
             criteriaBuilder.like(root.get("listingname"), "%" + listingname + "%");
     }
+    
+    public static Specification<Listing> byRentalId(Long rentalId) {
+        return (root, query, criteriaBuilder) -> 
+            rentalId == null ? null : criteriaBuilder.equal(root.get("rental").get("id"), rentalId);
+    }
+
 }

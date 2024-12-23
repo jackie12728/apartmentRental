@@ -62,9 +62,6 @@ public class User {
 	private List<Listing> listings;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Order> orders;
-
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Review> reviews;
 
 	// 建立用戶可以關注商品的多對多關係
