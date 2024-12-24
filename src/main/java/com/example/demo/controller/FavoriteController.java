@@ -21,6 +21,16 @@ import com.example.demo.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
+/*
+ * WEB REST API
+ * ----------------------------------
+ * Servlet-Path: /favorites
+ * ----------------------------------
+ * GET    /                    獲取用戶關注清單
+ * GET    /listing/{listingId} 獲取商品被關注清單
+ * POST   /{listingId}         加入關注
+ * DELETE /{listingId}         取消關注
+ * */
 @RestController
 @RequestMapping("/favorites")
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")

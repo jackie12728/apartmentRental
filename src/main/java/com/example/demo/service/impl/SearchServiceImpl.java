@@ -111,4 +111,10 @@ public class SearchServiceImpl implements SearchService {
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	public List<ListingDTO> getListingsByUserId(Long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

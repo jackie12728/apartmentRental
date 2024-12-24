@@ -20,4 +20,6 @@ public interface SearchService {
 	
 	public List<AppointmentListingDTO> getUserAppointments(Long userId);
 	
+	public List<ListingDTO> getListingsByUserId(Long userId);
+	
 }

@@ -1,7 +1,5 @@
 package com.example.demo.model.dto;
 
-import java.time.LocalDateTime;
-
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
