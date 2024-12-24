@@ -34,6 +34,7 @@ import com.example.demo.service.SearchService;
  * GET /searchBar                 依據搜尋列條件查詢房屋和圖片
  * GET /listingImage/{listingId}  依據房屋ID查詢房屋圖片
  * GET /userAppointments/{userId} 依據使用者ID查詢預約紀錄和房屋資料
+ * GET /userListing/{userId}      依據使用者ID查詢房屋
  */
 
 @RestController
@@ -117,6 +118,17 @@ public class SearchController {
     	}
     	
     	return ResponseEntity.ok(ApiResponse.success("查詢預約紀錄成功", appointmentListingDTOs));
+    }
+    
+    @GetMapping("/userListing/{userId}")
+    @CheckUserSession
+    public ResponseEntity<ApiResponse<List<ListingDTO>>> getUserListing(@PathVariable Long userId) {
+    	List<ListingDTO> listingDTOs = searchService.getListingsByUserId(userId);
+    	if (listingDTOs.isEmpty()) {
+    		return ResponseEntity.status(404).body(ApiResponse.error(404, "查詢不到房屋資料"));
+		}
+    	
+    	return ResponseEntity.ok(ApiResponse.success("查詢房屋資料成功", listingDTOs));
     }
     
 }

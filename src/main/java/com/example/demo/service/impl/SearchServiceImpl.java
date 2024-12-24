@@ -113,8 +113,9 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	public List<ListingDTO> getListingsByUserId(Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return listingRepository.findByUserId(userId).stream()
+				.map(listing -> modelMapper.map(listing, ListingDTO.class))
+				.collect(Collectors.toList());
 	}
 
 }

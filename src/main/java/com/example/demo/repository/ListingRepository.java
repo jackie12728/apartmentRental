@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -46,4 +48,11 @@ public interface ListingRepository extends JpaRepository<Listing, Long>, JpaSpec
 					WHERE id = :listingId
 				   """, nativeQuery = true)
 	void deleteListingByListingId(@Param("listingId") Long listingId);
+	
+	@Query(value = """
+					SELECT *
+					FROM listings
+					WHERE user_id = :userId
+				   """, nativeQuery = true)
+	List<Listing> findByUserId(@Param("userId") Long userId);
 }
