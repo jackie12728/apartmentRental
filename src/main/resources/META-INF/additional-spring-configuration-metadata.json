@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "kaptcha.border",
+  "type": "java.lang.String",
+  "description": "A description for 'kaptcha.border'"
+}]}
