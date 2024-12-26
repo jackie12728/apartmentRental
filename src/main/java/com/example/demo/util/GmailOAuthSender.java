@@ -35,19 +35,17 @@ public class GmailOAuthSender {
     private static final GsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
     private static final List<String> SCOPES = Collections.singletonList("https://www.googleapis.com/auth/gmail.send");
 
-    // 複製到工具方法
-    // main 改掉
-    public static void main(String[] args) throws Exception {
-        Gmail service = getGmailService();
-        try {
-        	sendMessage(service, "me", createEmail("as212638@gmail.com", "信件標題", "信件內容"));
-            System.out.println("郵件已成功寄出！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("郵件寄送失敗：" + e.getMessage());
-        }
-
-    }
+//    public static void main(String[] args) throws Exception {
+//        Gmail service = getGmailService();
+//        try {
+//        	sendMessage(service, "me", createEmail("as212638@gmail.com", "信件標題", "信件內容"));
+//            System.out.println("郵件已成功寄出！");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.out.println("郵件寄送失敗：" + e.getMessage());
+//        }
+//
+//    }
 
     public static Gmail getGmailService() throws Exception {
 //    	clearStoredTokens();
