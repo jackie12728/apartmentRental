@@ -26,7 +26,9 @@ import com.example.demo.repository.PermissionRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.UserStatusRepository;
 import com.example.demo.service.UserService;
+import com.example.demo.util.GmailOAuthSender;
 import com.example.demo.util.Hash;
+import com.google.api.services.gmail.Gmail;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -49,6 +51,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Optional<UserDTO> login(LoginDTO loginDTO) {
 		
+		
+        try {
+        	Gmail service = GmailOAuthSender.getGmailService();
+        	GmailOAuthSender.sendMessage(service, "me", GmailOAuthSender.createEmail("as212638@gmail.com", "信件標題", "信件內容"));
+            System.out.println("郵件已成功寄出！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("郵件寄送失敗：" + e.getMessage());
+        }
+		
 		Optional<User> optUser = userRepository.findByEmail(loginDTO.getEmail());
 		if (optUser.isPresent()) {
 			User user = optUser.get();
@@ -63,7 +75,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Optional<UserDTO> saveUser(RegisterDTO registerDTO) {
+	public String saveUser(RegisterDTO registerDTO) {
 		String salt = Hash.getSalt(); // 得到隨機鹽
 		String passwordHash = Hash.getHash(registerDTO.getPassword(), salt);
 		Optional<Permission> permission = permissionRepository.findById(1L);
@@ -78,7 +90,19 @@ public class UserServiceImpl implements UserService {
 		user.setUserStatus(userStatus.get());
 		user = userRepository.save(user);
 		
-		return Optional.of(modelMapper.map(user, UserDTO.class));
+		String code = "123";
+		
+		try {
+        	Gmail service = GmailOAuthSender.getGmailService();
+        	GmailOAuthSender.sendMessage(service, "me", GmailOAuthSender.createEmail("as212638@gmail.com", "信件標題", "信件內容"));
+            System.out.println("郵件已成功寄出！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("郵件寄送失敗：" + e.getMessage());
+        }
+		
+//		return Optional.of(modelMapper.map(user, UserDTO.class));
+		return code;
 	}
 
 	@Override

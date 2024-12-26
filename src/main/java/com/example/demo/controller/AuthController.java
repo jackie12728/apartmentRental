@@ -61,12 +61,12 @@ public class AuthController {
 	@PostMapping("/register")
 	public ResponseEntity<ApiResponse<String>> register(@RequestBody RegisterDTO registerDTO) {
 		
-		Optional<UserDTO> optUserDTO = userService.saveUser(registerDTO);
-		if(optUserDTO.isEmpty()) {
-			return ResponseEntity.status(409).body(ApiResponse.error(409, "註冊重複帳號"));
-		}
+		String code = userService.saveUser(registerDTO);
+//		if(optUserDTO.isEmpty()) {
+//			return ResponseEntity.status(409).body(ApiResponse.error(409, "註冊重複帳號"));
+//		}
 		
-		return ResponseEntity.ok(ApiResponse.success("註冊成功", "註冊成功"));
+		return ResponseEntity.ok(ApiResponse.success("註冊成功", code));
 	}
 	
 	// 登出

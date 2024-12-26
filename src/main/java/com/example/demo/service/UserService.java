@@ -14,7 +14,7 @@ public interface UserService {
 
 	Optional<UserDTO> login(LoginDTO loginDTO);
 
-	Optional<UserDTO> saveUser(RegisterDTO registerDTO);
+	String saveUser(RegisterDTO registerDTO);
 
 	Optional<UserDTO> updateUserPhoneNumber(SimpleUserDTO simpleUserDTO);
 
