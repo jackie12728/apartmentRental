@@ -13,6 +13,7 @@ import com.example.demo.model.entity.Listing;
 import com.example.demo.model.entity.Region;
 import com.example.demo.model.entity.Rental;
 import com.example.demo.repository.CityRepository;
+import com.example.demo.repository.ListingImageRepository;
 import com.example.demo.repository.ListingRepository;
 import com.example.demo.repository.RegionRepository;
 import com.example.demo.repository.RentalRepository;
@@ -33,6 +34,9 @@ public class ListingServiceImpl implements ListingService {
 	
 	@Autowired
 	private RentalRepository rentalRepository;
+	
+	@Autowired
+	private ListingImageRepository listingImageRepository;
 	
 	@Autowired
 	private ModelMapper modelMapper;
