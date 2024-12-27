@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -7,6 +8,7 @@ import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.exception.ListingNotFoundException;
@@ -47,19 +49,12 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	private RedisTemplate<String, String> redisTemplate;
 
 	@Override
 	public Optional<UserDTO> login(LoginDTO loginDTO) {
-		
-		
-        try {
-        	Gmail service = GmailOAuthSender.getGmailService();
-        	GmailOAuthSender.sendMessage(service, "me", GmailOAuthSender.createEmail("as212638@gmail.com", "信件標題", "信件內容"));
-            System.out.println("郵件已成功寄出！");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("郵件寄送失敗：" + e.getMessage());
-        }
 		
 		Optional<User> optUser = userRepository.findByEmail(loginDTO.getEmail());
 		if (optUser.isPresent()) {
@@ -90,8 +85,11 @@ public class UserServiceImpl implements UserService {
 		user.setUserStatus(userStatus.get());
 		user = userRepository.save(user);
 		
+		// 可以存在 redis，就不用傳前端
+		String registerCode = "registerCode";
 		String code = "123";
-		
+		redisTemplate.opsForValue().set("registerCode", code, Duration.ofMinutes(10));
+		Object vacode=redisTemplate.opsForValue().get("registerCode");
 		try {
         	Gmail service = GmailOAuthSender.getGmailService();
         	GmailOAuthSender.sendMessage(service, "me", GmailOAuthSender.createEmail("as212638@gmail.com", "信件標題", "信件內容"));
@@ -102,6 +100,7 @@ public class UserServiceImpl implements UserService {
         }
 		
 //		return Optional.of(modelMapper.map(user, UserDTO.class));
+		// 就不用回傳
 		return code;
 	}
 
@@ -165,6 +164,15 @@ public class UserServiceImpl implements UserService {
 		user.getFavoriteListings().remove(listing);
 		// 保存關係
 		userRepository.save(user);
+	}
+
+	@Override
+	public void testRedis() {
+//		String registerCode = "registerCode";
+		String code = "123";
+		redisTemplate.opsForValue().set("registerCode", code, Duration.ofMinutes(10));
+		String vacode = redisTemplate.opsForValue().get("registerCode");
+		System.out.println("vacode: " + vacode);
 	}
 
 }

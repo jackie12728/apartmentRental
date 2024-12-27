@@ -29,5 +29,7 @@ public interface UserService {
 
 	// 移除商品關注
 	public void removeFavoriteListing(Long userId, Long listingId);
+	
+	public void testRedis();
 
 }
