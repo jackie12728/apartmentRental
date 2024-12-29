@@ -16,6 +16,7 @@ import com.example.demo.model.dto.LoginDTO;
 import com.example.demo.model.dto.RegisterDTO;
 import com.example.demo.model.dto.SimpleUserDTO;
 import com.example.demo.model.dto.UserDTO;
+import com.example.demo.model.dto.VerifyDTO;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.UserService;
 
@@ -32,6 +33,9 @@ import jakarta.servlet.http.HttpSession;
  * GET  /isLoggedIn            判斷目前的連線是否有登入
  * GET  /getCurrentUser        取得當前使用者的 ID、名稱、電話號碼、權限
  * POST /updateUserPhoneNumber 更新使用者電話號碼
+ * POST /sendVerification      寄送驗證碼
+ * POST /validateCode          驗證驗證碼
+ * POST /forget/password       忘記密碼
  * */
 
 @RestController
@@ -59,14 +63,14 @@ public class AuthController {
 	
 	// 註冊
 	@PostMapping("/register")
-	public ResponseEntity<ApiResponse<String>> register(@RequestBody RegisterDTO registerDTO) {
+	public ResponseEntity<ApiResponse<UserDTO>> register(@RequestBody RegisterDTO registerDTO) {
 		
-		String code = userService.saveUser(registerDTO);
-//		if(optUserDTO.isEmpty()) {
-//			return ResponseEntity.status(409).body(ApiResponse.error(409, "註冊重複帳號"));
-//		}
+		Optional<UserDTO> optUserDTO = userService.saveUser(registerDTO);
+		if(optUserDTO.isEmpty()) {
+			return ResponseEntity.status(409).body(ApiResponse.error(409, "註冊重複帳號"));
+		}
 		
-		return ResponseEntity.ok(ApiResponse.success("註冊成功", code));
+		return ResponseEntity.ok(ApiResponse.success("註冊成功", null));
 	}
 	
 	// 登出
@@ -113,5 +117,28 @@ public class AuthController {
 		
 		return ResponseEntity.ok(ApiResponse.success("更新電話號碼成功", "更新電話號碼成功"));
 	}
+	
+	// 寄送驗證碼
+	@PostMapping("/sendVerification")
+	public ResponseEntity<ApiResponse<String>> sendVerification(@RequestBody String recipientEmail) {
+		Boolean sendBoolean = userService.sendVerificationCode(recipientEmail);
+		
+		if(sendBoolean) {
+			return ResponseEntity.ok(ApiResponse.success("驗證碼寄送成功", "驗證碼寄送成功"));
+		}
+		
+		return ResponseEntity.status(404).body(ApiResponse.error(404, "驗證碼寄送失敗"));
+	}
 
+	// 驗證驗證碼
+	@PostMapping("/validateCode")
+	public ResponseEntity<ApiResponse<String>> validateCode(@RequestBody VerifyDTO verifyDTO) {
+		Boolean verifyBoolean = userService.validateCode(verifyDTO.getEmail(), verifyDTO.getCode());
+		
+		if(verifyBoolean) {
+			return ResponseEntity.ok(ApiResponse.success("驗證碼正確", "驗證碼正確"));
+		}
+		
+		return ResponseEntity.status(404).body(ApiResponse.error(404, "驗證碼錯誤"));
+	}
 }

@@ -1,19 +1,20 @@
 package com.example.demo.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.model.dto.ListingDTO;
 import com.example.demo.model.entity.City;
 import com.example.demo.model.entity.Listing;
+import com.example.demo.model.entity.ListingImage;
 import com.example.demo.model.entity.Region;
 import com.example.demo.model.entity.Rental;
 import com.example.demo.repository.CityRepository;
-import com.example.demo.repository.ListingImageRepository;
 import com.example.demo.repository.ListingRepository;
 import com.example.demo.repository.RegionRepository;
 import com.example.demo.repository.RentalRepository;
@@ -36,21 +37,41 @@ public class ListingServiceImpl implements ListingService {
 	private RentalRepository rentalRepository;
 	
 	@Autowired
-	private ListingImageRepository listingImageRepository;
-	
-	@Autowired
 	private ModelMapper modelMapper;
 
 	// 新增房屋
 	@Override
+	@Transactional
 	public Optional<ListingDTO> saveListing(ListingDTO listingDTO) {
-		Listing listing = modelMapper.map(listingDTO, Listing.class);
-		listing.setListingCreatedAt(LocalDateTime.now());
-		listing.setUpdatedAt(LocalDateTime.now());
-		listing = listingRepository.save(listing);
-		
-		return Optional.of(modelMapper.map(listing, ListingDTO.class));
-	}
+        // 創建並儲存 Listing
+        final Listing savedListing = saveListing(modelMapper.map(listingDTO, Listing.class));
+        
+        // 儲存圖片資訊
+        List<ListingImage> listingImages = saveListingImages(listingDTO.getImagePaths(), savedListing);
+        
+        // 設定雙向關聯
+        savedListing.setListingImages(listingImages);
+        
+        return Optional.of(modelMapper.map(savedListing, ListingDTO.class));
+    }
+    
+    private Listing saveListing(Listing listing) {
+        listing.setListingCreatedAt(LocalDateTime.now());
+        listing.setUpdatedAt(LocalDateTime.now());
+        return listingRepository.save(listing);
+    }
+    
+    private List<ListingImage> saveListingImages(List<String> imagePaths, Listing listing) {
+        return imagePaths.stream()
+            .map(imagePath -> {
+                ListingImage listingImage = new ListingImage();
+                listingImage.setListing(listing);
+                listingImage.setImagePath(imagePath);
+                listingImage.setUploadedAt(LocalDateTime.now());
+                return listingImage;
+            })
+            .collect(Collectors.toList());
+    }
 
 	// 修改房屋
 	@Override

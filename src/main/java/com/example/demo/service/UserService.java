@@ -14,7 +14,7 @@ public interface UserService {
 
 	Optional<UserDTO> login(LoginDTO loginDTO);
 
-	String saveUser(RegisterDTO registerDTO);
+	Optional<UserDTO> saveUser(RegisterDTO registerDTO);
 
 	Optional<UserDTO> updateUserPhoneNumber(SimpleUserDTO simpleUserDTO);
 
@@ -30,6 +30,10 @@ public interface UserService {
 	// 移除商品關注
 	public void removeFavoriteListing(Long userId, Long listingId);
 	
-	public void testRedis();
+	// 寄送驗證碼
+	public Boolean sendVerificationCode(String recipientEmail);
+	
+	// 驗證驗證碼
+	public Boolean validateCode(String email, String code);
 
 }
