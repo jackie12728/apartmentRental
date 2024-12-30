@@ -16,15 +16,15 @@ public class TestModifyListing {
 	
 	@Test
 	public void test() {
-		Long id = 43L;
-		String listingname = "生活家溫馨兩房";
-		String description = "邊間~ 採光佳~ 一樓永豐銀行";
+		Long id = 42L;
+		String listingname = "台北市精緻小套房";
+		String description = "小巧舒適，適合單身族群，近捷運站";
 		Long cityId = 1L;
-		Long regionId = 160L;
-		String address = "台北市士林區南京東路五段46號12樓";
-		Integer rent = 9000;
+		Long regionId = 161L;
+		String address = "台北市中山區長安東路二段67號";
+		Integer rent = 6600;
 		Long userId = 1L;
-		Long rentalId = 1L;
+		Long rentalId = 2L;
 		
 		ListingDTO listingDTO = new ListingDTO();
 		listingDTO.setId(id);

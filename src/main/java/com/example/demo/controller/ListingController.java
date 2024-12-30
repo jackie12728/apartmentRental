@@ -99,6 +99,7 @@ public class ListingController {
 	@PostMapping("/modify")
 	@CheckUserSession
 	public ResponseEntity<ApiResponse<String>> modifyListing(@RequestBody ListingDTO listingDTO) {
+		System.out.println("listingDTO: " + listingDTO);
 		Optional<ListingDTO> optListingDTO = listingService.modifyListing(listingDTO);
 		if(optListingDTO.isEmpty()) {
 			return ResponseEntity.status(400).body(ApiResponse.error(400, "更新房屋失敗"));

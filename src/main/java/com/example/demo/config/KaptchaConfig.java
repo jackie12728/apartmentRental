@@ -21,8 +21,8 @@ public class KaptchaConfig {
         properties.setProperty("kaptcha.border.color", "34,114,200");
         properties.setProperty("kaptcha.image.width", "200");
         properties.setProperty("kaptcha.image.height", "50");
-        properties.setProperty("kaptcha.textproducer.char.string", "abcde2345678gfynmnpwx");
-        properties.setProperty("kaptcha.textproducer.char.length", "6");
+        properties.setProperty("kaptcha.textproducer.char.string", "0123456789");
+        properties.setProperty("kaptcha.textproducer.char.length", "4");
         properties.setProperty("kaptcha.textproducer.font.names", "Arial,Arial Narrow,Serif,Helvetica,Tahoma,Times New Roman,Verdana");
         properties.setProperty("kaptcha.textproducer.font.size", "38");
 
