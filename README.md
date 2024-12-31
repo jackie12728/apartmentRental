@@ -27,7 +27,5 @@
 
 ## 畫面與功能
 註冊與登入
-<div style="display: flex; justify-content: space-between;">
-  <img src="src/main/resources/static/images/listingImages/screen_and_function.jpg" alt="screen_and_function" style="width: 48%;">
-  <img src="src/main/resources/static/images/listingImages/screen_and_function2.jpg" alt="screen_and_function2" style="width: 48%;">
-</div>
+<img src="src/main/resources/static/images/listingImages/screen_and_function.jpg" alt="screen_and_function" style="max-width: 100%; height: auto;">
+<img src="src/main/resources/static/images/listingImages/screen_and_function2.jpg" alt="screen_and_function2" style="max-width: 100%; height: auto;">
