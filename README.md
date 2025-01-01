@@ -26,6 +26,18 @@
 <img src="src/main/resources/static/images/listingImages/website_architecture.jpg" alt="website_architecture" style="max-width: 100%; height: auto;">
 
 ## 畫面與功能
-註冊與登入
+### 註冊、登入
 <img src="src/main/resources/static/images/listingImages/screen_and_function.jpg" alt="screen_and_function" style="max-width: 100%; height: auto;">
 <img src="src/main/resources/static/images/listingImages/screen_and_function2.jpg" alt="screen_and_function2" style="max-width: 100%; height: auto;">
+
+### 首頁、預約看房
+<img src="src/main/resources/static/images/listingImages/screen_and_function3.jpg" alt="screen_and_function3" style="max-width: 100%; height: auto;">
+<img src="src/main/resources/static/images/listingImages/screen_and_function4.jpg" alt="screen_and_function4" style="max-width: 100%; height: auto;">
+
+### 使用者管理、房屋管理
+<img src="src/main/resources/static/images/listingImages/screen_and_function5.jpg" alt="screen_and_function5" style="max-width: 100%; height: auto;">
+<img src="src/main/resources/static/images/listingImages/screen_and_function6.jpg" alt="screen_and_function6" style="max-width: 100%; height: auto;">
+
+### 預約紀錄、收藏紀錄
+<img src="src/main/resources/static/images/listingImages/screen_and_function7.jpg" alt="screen_and_function7" style="max-width: 100%; height: auto;">
+<img src="src/main/resources/static/images/listingImages/screen_and_function8.jpg" alt="screen_and_function8" style="max-width: 100%; height: auto;">
