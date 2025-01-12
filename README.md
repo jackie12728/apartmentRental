@@ -27,6 +27,8 @@
 - 安全性：
   - CAPTCHA 圖形驗證碼防止機器人攻擊，加強網站安全
   - SHA-256 密碼加鹽防止彩虹表攻擊，保護用戶隱私
+- API 測試：Insomnia
+- 壓力測試：JMeter
 
 ## 資料庫架構
 <img src="src/main/resources/static/images/listingImages/database_architecture.jpg" alt="database_architecture" style="max-width: 100%; height: auto;">
