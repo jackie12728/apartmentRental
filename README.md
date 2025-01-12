@@ -1,6 +1,9 @@
 # 租屋平台 QuickLease
 <img src="src/main/resources/static/images/listingImages/apartment.jpg" alt="Photo by Luke van Zyl on Unsplash" width="200">
 
+## 目錄
+ - [專題背景](#專題背景)
+
 ## 專題背景
 　　靈感來自我在學生時期的租屋經驗。對許多學生來說，租屋是新學期開始前必須面對的課題，但這個過程並不輕鬆。常見的問題包括資訊來源分散，無法一次掌握所有選項；租屋流程繁瑣，與房東溝通效率低；甚至還有安全問題，例如不可靠的房東。這些痛點讓我深刻意識到，需要一個能簡化租屋流程、提高資訊透明度的解決方案。因此，QuickLease 應運而生。
 
